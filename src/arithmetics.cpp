@@ -1,12 +1,12 @@
 #include "arithmetics.h"
 
 namespace cgraph{
-	class AddNode:public Node{
+	class NodeAdd:public Node{
 		private:
 			ptr a,b;
 		public:
-			~AddNode(){}
-			AddNode(ptr _a,ptr _b):a(_a),b(_b){}
+			~NodeAdd(){}
+			NodeAdd(ptr _a,ptr _b):a(_a),b(_b){}
 			std::vector<ptr> getPrec() const{
 				return {a,b};
 			}
@@ -15,6 +15,6 @@ namespace cgraph{
 			}
 	};
 	Expression operator + (Expression a,Expression b){
-		ptr r=std::make_shared<AddNode>(a.getPtr(),b.getPtr());
+		ptr r=std::make_shared<NodeAdd>(a.getPtr(),b.getPtr());
 	}
 }
