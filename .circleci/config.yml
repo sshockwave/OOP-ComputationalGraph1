@@ -9,7 +9,9 @@ jobs:
 
       - run:
           name: Installing c++ toolchain
-          command: apt-get install -y g++ make
+          command: |
+            apt-get update
+            apt-get install -y g++ make
 
       - run:
           name: Make computational graph binaries
