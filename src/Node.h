@@ -8,7 +8,7 @@ namespace cgraph{
 	class Node{
 		public:
 			virtual ~Node();
-			virtual std::vector<ptr> getPrec() const;
-			virtual float eval(std::vector<float>) const;
+			virtual std::vector<ptr> getPrec() const=0;
+			virtual float eval(std::vector<float>) const=0;
 	};
 }
