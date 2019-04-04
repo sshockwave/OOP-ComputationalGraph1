@@ -22,5 +22,11 @@ jobs:
           command: make bin/main.o
 
       - run:
+          name: Make main program
+          command: |
+            echo Methods not yet implemented
+            #make all
+
+      - run:
           name: Run tests
           command: echo No tests specified.
