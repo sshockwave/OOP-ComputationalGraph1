@@ -33,3 +33,6 @@
 
 # Output Directory
 bin/
+
+# Vim Temporary Files
+.*.swp
