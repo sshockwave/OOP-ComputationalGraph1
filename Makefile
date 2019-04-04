@@ -1,6 +1,6 @@
 CXX_FLAGS=-std=c++11 -g
 
-cgraph=bin/Node.o bin/floattypes.o bin/Session.o bin/Graph.o bin/arithmetics.o
+cgraph=bin/Node.o bin/Expression.o bin/arithmetics.o bin/floattypes.o bin/Session.o bin/Graph.o
 
 .PHONY: all clean cgraph
 
