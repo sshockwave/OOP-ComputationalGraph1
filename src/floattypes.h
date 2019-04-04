@@ -30,7 +30,7 @@ namespace cgraph{
 			float *fp;
 			ptr p;
 		public:
-			Variable(float);
+			Variable(float=0);
 			operator Expression() const;
 			float value() const;
 			Variable& operator = (float);

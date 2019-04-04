@@ -81,5 +81,5 @@ namespace cgraph{
 	 * Syntax sugar for evaluating an expression.
 	 * E.g. eval(expr,{{a,13},{b,-3.5}})
 	 */
-	float eval(Expression,Session);
+	float eval(Expression,Session={});
 }
