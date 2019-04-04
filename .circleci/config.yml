@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+
+    steps:
+      - checkout
+
+      - run:
+          name: Installing c++ toolchain
+          command: apt-get install -y g++ make
+
+      - run:
+          name: Make computational graph binaries
+          command: make cgraph
+
+      - run:
+          name: Make main binary
+          command: make bin/main.o
