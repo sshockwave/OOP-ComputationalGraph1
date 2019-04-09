@@ -31,7 +31,7 @@ namespace cgraph{
 			 * when no where else has a reference,
 			 * therefore weak pointers are adopted.
 			 */
-			std::map<std::weak_ptr<Node>,float> cache;
+			std::map<std::weak_ptr<Node>,float,std::owner_less<std::weak_ptr<Node>>> cache;
 
 		public:
 			Session()=default;
