@@ -17,10 +17,9 @@ jobs:
           name: Make main binary
           command: make bin/main.o
       - run:
-          name: Make main program
+          name: Link libraries
           command: |
-            echo Methods not yet implemented
-            #make all
+            make all
       - store_artifacts:
           path: bin/main
       - run:
