@@ -74,6 +74,20 @@ namespace cgraph{
 			 * Alias for eval()
 			 */
 			float operator [] (Expression);
+
+			/**
+			 * Session::clean
+			 *
+			 * Remove expired values.
+			 */
+			void clean();
+
+			/**
+			 * Session::clear
+			 *
+			 * Empty session
+			 */
+			void clear();
 	};
 	/**
 	 * eval(Expression,Session)
