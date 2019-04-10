@@ -8,7 +8,7 @@ all: bin/main.o $(cgraph)
 	$(CXX) $^ -o bin/main.exe $(CXX_FLAGS)
 
 clean:
-	rm -rf bin/
+	rm -rf bin/*
 
 bin/main.o: src/main.cpp src/cgraph.h
 	$(CXX) -c $< -o $@ $(CXX_FLAGS)
