@@ -24,9 +24,6 @@ namespace cgraph{
 			 * Node::getPrec
 			 *
 			 * Get the list of input nodes.
-			 * For nodes that are not yet calculated,
-			 * the calculation order shall strictly follow
-			 * the order in the vector.
 			 */
 			virtual std::vector<ptr> getPrec() const=0;
 			/**
@@ -37,6 +34,9 @@ namespace cgraph{
 			 * The order of input values
 			 * should be the same as the order
 			 * given in getPrec.
+			 * For nodes that are not yet calculated,
+			 * the order of calculation should strictly follow
+			 * the order in the vector.
 			 */
 			virtual float eval(std::vector<float>) const=0;
 	};
