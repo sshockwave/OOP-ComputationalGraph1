@@ -15,6 +15,6 @@ namespace cgraph{
 			}
 	};
 	Expression operator + (Expression a,Expression b){
-		ptr r=std::make_shared<NodeAdd>(a.getPtr(),b.getPtr());
+		Node::ptr r=std::make_shared<NodeAdd>(a.getPtr(),b.getPtr());
 	}
 }

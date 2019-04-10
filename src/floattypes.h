@@ -28,7 +28,7 @@ namespace cgraph{
 	class Variable{
 		private:
 			float *fp;
-			ptr p;
+			Expression expr;
 		public:
 			Variable(float=0);
 			operator Expression() const;

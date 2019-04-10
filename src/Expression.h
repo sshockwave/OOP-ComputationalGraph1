@@ -4,14 +4,14 @@
 namespace cgraph{
 	class Expression{
 		private:
-			const ptr p;
+			const Node::ptr ptr;
 		public:
-			Expression(ptr);
+			Expression(Node::ptr);
 			/**
 			 * Expression::getPtr
 			 * 
 			 * Returns the pointer
 			 */
-			ptr getPtr() const;
+			Node::ptr getPtr() const;
 	};
 }
