@@ -5,7 +5,7 @@ cgraph=bin/Node.o bin/Expression.o bin/arithmetics.o bin/floattypes.o bin/Sessio
 .PHONY: all clean cgraph
 
 all: bin/main.o $(cgraph)
-	$(CXX) $^ -o dist/main.exe $(CXX_FLAGS)
+	$(CXX) $^ -o dist/main $(CXX_FLAGS)
 
 clean:
 	rm -rf bin/* dist/*
