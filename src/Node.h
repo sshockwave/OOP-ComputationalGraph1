@@ -8,7 +8,6 @@ namespace cgraph{
 	 *
 	 * Basic ideas are similar to
 	 * http://www.deepideas.net/deep-learning-from-scratch-i-computational-graphs/
-	 * Ported to C++.
 	 */
 	class Node{
 		public:
