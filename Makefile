@@ -1,6 +1,6 @@
 CXX_FLAGS=-std=c++11 -g
 
-cgraph=bin/Node.o bin/Expression.o bin/arithmetics.o bin/floattypes.o bin/Session.o bin/Graph.o
+cgraph=bin/Node.o bin/Expression.o bin/arithmetics.o bin/floattypes.o bin/Session.o bin/Graph.o bin/Error.o
 
 .PHONY: all clean cgraph
 
@@ -58,4 +58,11 @@ src/Graph.h: src/Expression.h src/floattypes.h
 src/Graph.cpp: src/Graph.h
 	touch $@
 bin/Graph.o: src/Graph.cpp
+	$(CXX) -c $< -o $@ $(CXX_FLAGS)
+
+src/Error.h:
+	touch $@
+src/Error.cpp: src/Error.h
+	touch $@
+bin/Error.o: src/Error.cpp
 	$(CXX) -c $< -o $@ $(CXX_FLAGS)
