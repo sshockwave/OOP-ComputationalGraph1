@@ -21,25 +21,8 @@ jobs:
           command: |
             echo Methods not yet implemented
             #make all
-      - persist_to_workspace:
-          root: .
-          paths:
-            - bin
       - store_artifacts:
           path: bin/main
-  test:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
       - run:
           name: Run tests
           command: make test
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
