@@ -10,6 +10,9 @@ all: bin/main.o $(cgraph)
 clean:
 	rm -rf bin/*
 
+test:
+	echo No tests specified.
+
 bin/main.o: src/main.cpp src/cgraph.h
 	$(CXX) -c $< -o $@ $(CXX_FLAGS)
 
