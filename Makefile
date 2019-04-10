@@ -31,9 +31,9 @@ bin/Expression.o: src/Expression.cpp
 
 src/arithmetics.h: src/Expression.h
 	touch $@
-src/arithmetics.cpp: src/arithmetics.h
+src/arithmetics.cpp: src/arithmetics.h src/Node.h
 	touch $@
-bin/arithmetics.o: src/arithmetics.cpp src/Node.h
+bin/arithmetics.o: src/arithmetics.cpp
 	$(CXX) -c $< -o $@ $(CXX_FLAGS)
 
 src/floattypes.h: src/Expression.h
