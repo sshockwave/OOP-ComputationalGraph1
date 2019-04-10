@@ -7,11 +7,12 @@ namespace cgraph{
 		public:
 			~NodeAdd(){}
 			NodeAdd(ptr _a,ptr _b):a(_a),b(_b){}
-			std::vector<ptr> getPrec() const{
-				return {a,b};
-			}
-			float eval(std::vector<float>vec) const{
-				return vec[0]+vec[1];
+			yield_t eval(const std::vector<float>&vec) const override{
+				if(vec.empty()){
+					return {{a,b},0};
+				}else{
+					return {{},vec[0]+vec[1]};
+				}
 			}
 	};
 	Expression operator + (Expression a,Expression b){

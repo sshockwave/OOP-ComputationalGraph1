@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <tuple>
 
 namespace cgraph{
 	/**
@@ -18,25 +19,29 @@ namespace cgraph{
 			 * Requires C++ 11.
 			 */
 			typedef std::shared_ptr<Node> ptr;
-			virtual ~Node();
+			virtual ~Node()=0;
 			/**
-			 * Node::getPrec
+			 * yield_t
 			 *
-			 * Get the list of input nodes.
+			 * Yield type for intermediate states.
 			 */
-			virtual std::vector<ptr> getPrec() const=0;
+			struct yield_t{
+				std::vector<ptr>vec;
+				float val;
+			};
 			/**
 			 * Node::eval
 			 *
-			 * Calculate the node's value
-			 * based on input values.
-			 * The order of input values
-			 * should be the same as the order
-			 * given in getPrec.
-			 * For nodes that are not yet calculated,
-			 * the order of calculation should strictly follow
-			 * the order in the vector.
+			 * Calculate the node's value.
+			 * If the vector passed does not contain enough values,
+			 * the function shall return a non-empty vector that
+			 * specifies the nodes to be calculated.
+			 * The calculated values shall then be appended to the vector
+			 * in respective order
+			 * and the function will be called again and again
+			 * until the returned vector is empty.
+			 * The float returned in the final call will be used as the node's value.
 			 */
-			virtual float eval(std::vector<float>) const=0;
+			virtual yield_t eval(const std::vector<float>& ={}) const=0;
 	};
 }
