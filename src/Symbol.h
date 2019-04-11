@@ -17,4 +17,6 @@ namespace cgraph{
 	};
 }
 
-template<> void std::swap(cgraph::Symbol&,cgraph::Symbol&);
+namespace std{
+	template<> void swap(cgraph::Symbol&,cgraph::Symbol&);
+}
