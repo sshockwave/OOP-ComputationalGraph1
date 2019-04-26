@@ -41,7 +41,7 @@ class NodeAdd:public Node{
 };
 
 cgraph::Expression operator + (cgraph::Expression a,cgraph::Expression b){
-	return static_cast<Node::ptr>(std::make_shared<NodeAdd>(a,b));
+	return std::make_shared<NodeAdd>(a,b);
 }
 
 class NodePrint:public Node{
@@ -66,5 +66,5 @@ class NodePrint:public Node{
 };
 
 Expression print(Expression expr,std::string name,std::ostream & out){
-	return static_cast<Node::ptr>(std::make_shared<NodePrint>(static_cast<Node::ptr>(expr),name,out));
+	return std::make_shared<NodePrint>(static_cast<Node::ptr>(expr),name,out);
 }
