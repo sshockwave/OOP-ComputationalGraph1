@@ -3,8 +3,6 @@
 #include <stack>
 
 namespace cgraph{
-	Expression::Expression(Node::ptr p):ptr(p){}
-
 	Expression::operator Node::ptr(){
 		return ptr;
 	}
