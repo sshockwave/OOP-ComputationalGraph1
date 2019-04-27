@@ -33,6 +33,7 @@
 
 # Outputs
 bin/
+dep/
 dist/
 
 # Editor Temporary Files
