@@ -51,6 +51,9 @@ namespace cgraph{
 	void Variable::set(num_t v) const{
 		ptr->set(v);
 	}
+	Variable& Variable::operator = (num_t v) const{
+		set(v);
+	}
 }
 
 using namespace cgraph;

@@ -39,6 +39,7 @@ namespace cgraph{
 			operator Expression() const;
 			num_t eval() const;
 			void set(num_t) const;
+			Variable& operator = (num_t) const;
 	};
 }
 
