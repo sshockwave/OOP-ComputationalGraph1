@@ -7,7 +7,7 @@ namespace cgraph{
 		private:
 			class NodePlaceholder: public Node{
 				public:
-					void set(num_t value,const Symbol&);
+					void set(num_t,const Symbol&);
 					void eval(Symbol) override;
 			};
 			std::shared_ptr<NodePlaceholder>ptr;
