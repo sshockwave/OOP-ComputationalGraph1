@@ -15,7 +15,7 @@ namespace cgraph{
 		return version;
 	}
 
-	num_t getValue() const{
+	num_t Node::getValue() const{
 		return value;
 	}
 }

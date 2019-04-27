@@ -72,12 +72,10 @@ namespace cgraph{
 			Symbol getVersion() const;
 			/**
 			 * Node::getValue
-			 * 
+			 *
 			 * constexpr is disabled due to gcc bug
 			 * https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66297
 			 */
-			num_t getValue() const{
-				return value;
-			}
+			num_t getValue() const;
 	};
 }
