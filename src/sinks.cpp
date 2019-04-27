@@ -2,11 +2,17 @@
 #include "Error.h"
 
 namespace cgraph{
-	class NodePlaceholder: public Node{
-		void eval(Symbol) override{
-			throw Error("Placeholder missing");
+	void Placeholder::NodePlaceholder::set(num_t v,const Symbol& s){
+		if(value!=v){
+			value=v;
+			version=s;
 		}
-	};
+		visited=s;
+	}
+
+	void Placeholder::NodePlaceholder::eval(Symbol){
+		throw Error("Placeholder missing");
+	}
 
 	Placeholder::Placeholder():ptr(std::make_shared<NodePlaceholder>()){}
 
@@ -14,12 +20,8 @@ namespace cgraph{
 		return ptr;
 	}
 
-	void Placeholder::set(num_t value,Symbol sym) const{
-		if(ptr->value!=value){
-			ptr->version=sym;
-		}
-		ptr->value=value;
-		ptr->visited=sym;
+	void Placeholder::set(num_t v,const Symbol &s) const{
+		ptr->set(v,s);
 	}
 
 	bool Placeholder::operator < (const Placeholder& b) const{

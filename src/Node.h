@@ -14,14 +14,7 @@ namespace cgraph{
 	 * Node
 	 */
 	class Node{
-		public:
-			/**
-			 * Node::visited
-			 *
-			 * Marks if this node has been visited
-			 * in the current round of calculation.
-			 */
-			Symbol visited;
+		protected:
 			/**
 			 * Node::version
 			 *
@@ -34,6 +27,14 @@ namespace cgraph{
 			 * The value in the current round of calculation.
 			 */
 			num_t value;
+		public:
+			/**
+			 * Node::visited
+			 *
+			 * Marks if this node has been visited
+			 * in the current round of calculation.
+			 */
+			Symbol visited;
 			/**
 			 * ptr
 			 *
@@ -65,5 +66,15 @@ namespace cgraph{
 			 * If updated, set version to the symbol in the parameter.
 			 */
 			virtual void eval(Symbol=Symbol())=0;
+			/**
+			 * Node::getVersion
+			 */
+			Symbol getVersion() const;
+			/**
+			 * Node::getValue
+			 */
+			constexpr num_t getValue() const{
+				return value;
+			}
 	};
 }
