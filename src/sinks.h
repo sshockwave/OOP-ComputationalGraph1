@@ -15,7 +15,6 @@ namespace cgraph{
 			Placeholder();
 			operator Expression() const;
 			void set(num_t v,const Symbol &s) const;
-			bool operator < (const Placeholder&) const;
 	};
 
 	class Constant{
@@ -25,7 +24,6 @@ namespace cgraph{
 			Constant(num_t);
 			operator Expression() const;
 			num_t eval() const;
-			bool operator < (const Constant&) const;
 	};
 
 	class Variable{
@@ -35,7 +33,6 @@ namespace cgraph{
 			num_t eval() const;
 			void set(num_t) const;
 			Variable& operator = (num_t) const;
-			bool operator < (const Variable&) const;
 	};
 }
 

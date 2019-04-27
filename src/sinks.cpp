@@ -20,10 +20,6 @@ namespace cgraph{
 		ptr->set(v,s);
 	}
 
-	bool Placeholder::operator < (const Placeholder& b) const{
-		return ptr<b.ptr;
-	}
-
 	class NodeConstant: public Node{
 		public:
 			NodeConstant(num_t v){
