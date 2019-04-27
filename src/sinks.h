@@ -27,12 +27,18 @@ namespace cgraph{
 	};
 
 	class Variable{
+		private:
+			class NodeVariable: public Node{
+				public:
+					void set(num_t);
+					void eval(Symbol) override;
+			};
+			std::shared_ptr<NodeVariable>ptr;
 		public:
 			Variable(num_t=0);
 			operator Expression() const;
 			num_t eval() const;
 			void set(num_t) const;
-			Variable& operator = (num_t) const;
 	};
 }
 

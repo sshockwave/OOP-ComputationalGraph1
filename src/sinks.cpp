@@ -34,6 +34,23 @@ namespace cgraph{
 	num_t Constant::eval() const{
 		return ptr->getValue();
 	}
+
+	void Variable::NodeVariable::set(num_t v){
+		value=v;
+	}
+	void Variable::NodeVariable::eval(Symbol){}
+	Variable::Variable(num_t v):ptr(std::make_shared<NodeVariable>()){
+		ptr->set(v);
+	}
+	Variable::operator Expression() const{
+		return ptr;
+	}
+	num_t Variable::eval() const{
+		return ptr->getValue();
+	}
+	void Variable::set(num_t v) const{
+		ptr->set(v);
+	}
 }
 
 using namespace cgraph;
