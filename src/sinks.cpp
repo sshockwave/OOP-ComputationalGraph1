@@ -25,6 +25,9 @@ namespace cgraph{
 	bool Placeholder::operator < (const Placeholder& b) const{
 		return ptr<b.ptr;
 	}
+
+	class NodeConstant{
+	};
 }
 
 using namespace cgraph;
