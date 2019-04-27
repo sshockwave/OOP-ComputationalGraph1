@@ -11,13 +11,7 @@ jobs:
             apt-get update
             apt-get install -y g++ make ca-certificates
       - run:
-          name: Make computational graph binaries
-          command: make cgraph
-      - run:
-          name: Make main binary
-          command: make bin/main.o
-      - run:
-          name: Link libraries
+          name: Make program
           command: |
             make all
       - store_artifacts:
