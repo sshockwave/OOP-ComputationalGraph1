@@ -9,17 +9,13 @@ namespace cgraph{
 		}
 		visited=s;
 	}
-
 	void Placeholder::NodePlaceholder::eval(Symbol){
 		throw Error("Placeholder missing");
 	}
-
 	Placeholder::Placeholder():ptr(std::make_shared<NodePlaceholder>()){}
-
 	Placeholder::operator Expression() const{
 		return ptr;
 	}
-
 	void Placeholder::set(num_t v,const Symbol &s) const{
 		ptr->set(v,s);
 	}
