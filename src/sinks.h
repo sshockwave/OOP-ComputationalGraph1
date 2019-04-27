@@ -19,6 +19,8 @@ namespace cgraph{
 	};
 
 	class Constant{
+		private:
+			Node::ptr ptr;
 		public:
 			Constant(num_t);
 			operator Expression() const;

@@ -28,8 +28,20 @@ namespace cgraph{
 		return ptr<b.ptr;
 	}
 
-	class NodeConstant{
+	class NodeConstant: public Node{
+		public:
+			NodeConstant(num_t v){
+				value=v;
+			}
+			void eval(Symbol) override{}
 	};
+	Constant::Constant(num_t v):ptr(std::make_shared<NodeConstant>(v)){}
+	Constant::operator Expression() const{
+		return ptr;
+	}
+	num_t Constant::eval() const{
+		return ptr->getValue();
+	}
 }
 
 using namespace cgraph;
