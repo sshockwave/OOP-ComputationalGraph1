@@ -19,7 +19,7 @@ dist/main: $(patsubst %,bin/%.o,$(src))
 .PRECIOUS: dep/%.d
 dep/%.d: src/%.cpp
 	@mkdir -p $(@D)
-	$(CXX) -o $@ src/$*.cpp -MM -MT bin/$*.o\ dep/$*.d
+	$(CXX) -o $@ src/$*.cpp -MM -MP -MT bin/$*.o\ dep/$*.d
 
 # Import dependencies
 -include $(patsubst %,dep/%.d,$(src))
