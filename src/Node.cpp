@@ -10,4 +10,8 @@ namespace cgraph{
 	std::vector<Node::ptr> Node::getPreq(Symbol) const{
 		return {};
 	}
+
+	Symbol Node::getVersion() const{
+		return version;
+	}
 }

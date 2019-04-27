@@ -29,6 +29,6 @@ namespace cgraph{
 				stack.pop();
 			}
 		}
-		return ptr->value;
+		return ptr->getValue();
 	}
 }

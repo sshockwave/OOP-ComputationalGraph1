@@ -28,13 +28,13 @@ class NodeAdd:public Node{
 			return list;
 		}
 		void eval(Symbol sym){
-			if(a->version==version&&b->version==version){
+			if(a->getVersion()==version&&b->getVersion()==version){
 				//这个节点的前驱节点的值没有变化
 				//不需要重新计算
 				return;
 			}
 			//重新计算值
-			value=a->value+b->value;
+			value=a->getValue()+b->getValue();
 			//因为这一次计算中值更新了，版本号也必须跟着更新
 			version=sym;
 		}
@@ -59,8 +59,8 @@ class NodePrint:public Node{
 			return {p};
 		}
 		void eval(Symbol sym){
-			version=p->version;
-			value=p->value;
+			version=p->getVersion();
+			value=p->getValue();
 			out<<"Print Operator: "<<name<<"="<<value<<std::endl;
 		}
 };

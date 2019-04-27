@@ -5,11 +5,16 @@
 namespace cgraph{
 	class Placeholder{
 		private:
-			Node::ptr ptr;
+			class NodePlaceholder: public Node{
+				public:
+					void set(num_t value,const Symbol&);
+					void eval(Symbol) override;
+			};
+			std::shared_ptr<NodePlaceholder>ptr;
 		public:
 			Placeholder();
 			operator Expression() const;
-			void set(num_t,Symbol) const;
+			void set(num_t v,const Symbol &s) const;
 			bool operator < (const Placeholder&) const;
 	};
 
