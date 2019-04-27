@@ -32,7 +32,7 @@ namespace cgraph{
 
 using namespace cgraph;
 
-float eval(Expression expr,std::map<Placeholder,num_t>values){
+num_t eval(Expression expr,std::map<Placeholder,num_t>values){
 	Symbol sym;
 	for(auto it:values){
 		it.first.set(it.second,sym);
