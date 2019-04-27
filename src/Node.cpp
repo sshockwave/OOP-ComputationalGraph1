@@ -14,4 +14,8 @@ namespace cgraph{
 	Symbol Node::getVersion() const{
 		return version;
 	}
+
+	num_t getValue() const{
+		return value;
+	}
 }
