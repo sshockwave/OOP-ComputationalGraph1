@@ -1,4 +1,6 @@
+#include<cmath>
 #include "arithmetics.h"
+#include "Error.h"
 
 using namespace cgraph;
 
@@ -374,7 +376,7 @@ public:
 		return list;
 	}
 	void eval(Symbol sym) {
-		if (a->getVersion() == version && b->getVersion() == version && b->getValue() == version) {
+		if (a->getVersion() == version && b->getVersion() == version && c->getValue() == version) {
 			return;
 		}
 		if (a->getValue() > 0) {
