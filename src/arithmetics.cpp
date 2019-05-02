@@ -79,7 +79,7 @@ public:
 		return { a,b };
 	}
 	void eval(Symbol sym) {
-		value = a->getValue()*b->getvalue();
+		value = a->getValue()*b->getValue();
 		version = sym;
 	}
 };
