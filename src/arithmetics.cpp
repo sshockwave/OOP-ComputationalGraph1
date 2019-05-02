@@ -376,7 +376,7 @@ public:
 		return list;
 	}
 	void eval(Symbol sym) {
-		if (a->getVersion() == version && b->getVersion() == version && c->getValue() == version) {
+		if (a->getVersion() == version && b->getVersion() == version && c->getVersion() == version) {
 			return;
 		}
 		if (a->getValue() > 0) {
