@@ -243,7 +243,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expreesion sigmoid(cgraph::Expression a) {
+cgraph::Expression sigmoid(cgraph::Expression a) {
 	return std::make_shared<NodeSigmoid>(a);
 }
 
