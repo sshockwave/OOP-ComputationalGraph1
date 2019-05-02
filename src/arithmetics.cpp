@@ -60,7 +60,8 @@ public:
 		version = sym;
 	}
 };
-cgragh::Expression operator -(cgragh::Expression a, cgragh::Expression b) {
+
+cgraph::Expression operator - (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeSubtract>(a, b);
 }
 
@@ -80,7 +81,7 @@ public:
 		version = sym;
 	}
 };
-cgragh::Expression operator *(cgragh::Expression a, cgragh::Expression b) {
+cgraph::Expression operator - (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeMultiply>(a, b);
 }
 
@@ -105,7 +106,7 @@ public:
 		}
 	}
 };
-cgragh::Expression operator /(cgragh::Expression, cgragh::Expression) {
+cgraph::Expression operator / (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeDivide>(a, b);
 }
 
@@ -150,8 +151,8 @@ public:
 		value = sin(p->getValue());
 		version = sym;
 	}
-}
-cgragh::Expression sin(cgragh::Expression a) {
+};
+cgraph::Expression sin (cgraph::Expression a) {
 	return std::make_shared<NodeSin>(a);
 }
 
@@ -176,8 +177,8 @@ public:
 			version = sym;
 		}
 	}
-}
-cgragh::Expression log(cgragh::Expression) {
+};
+cgraph::Expression log(cgraph::Expression a) {
 	return std::make_shared<NodeLog>(a);
 }
 
@@ -197,8 +198,8 @@ public:
 		value = exp(p->getValue());
 		version = sym;
 	}
-}
-cgragh::Expression exp(cgragh::Expression) {
+};
+cgraph::Expression exp(cgraph::Expression a) {
 	return std::make_shared<NodeExp>(a);
 }
 
@@ -218,8 +219,8 @@ public:
 		value = 1.0 / (exp(p->getValue()) + exp(-p->getValue()));
 		version = sym;
 	}
-}
-cgragh::Expression tanh(cgragh::Expression) {
+};
+cgraph::Expression tanh(cgraph::Expression a) {
 	return std::make_shared<NodeTanh>(a);
 }
 
@@ -241,16 +242,16 @@ public:
 		else value == -1.0;
 		version = sym;
 	}
-}
-cgragh::Expreesion sigmoid(cgragh::Expression) {
-	return std::make_shared<NodeSIgmoid>(a);
+};
+cgraph::Expreesion sigmoid(cgraph::Expression a) {
+	return std::make_shared<NodeSigmoid>(a);
 }
 
 class NodeCmp1 :public Node {
 private:
 	ptr a, b;
-	public：
-		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
+public:
+	NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -262,16 +263,16 @@ private:
 		else value = 0.0;
 		version = sym;
 	}
-}
-cgragh::Expression operator > (cgragh::Expression a, cgragh::Expression b) {
+};
+cgraph::Expression operator > (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeCmp1>(a, b);
 }
 
 class NodeCmp2 :public Node {
 private:
 	ptr a, b;
-	public：
-		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
+public:
+	NodeCmp2(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -283,16 +284,16 @@ private:
 		else value = 0.0;
 		version = sym;
 	}
-}
-cgragh::Expression operator < (cgragh::Expression a, cgragh::Expression b) {
+};
+cgraph::Expression operator < (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeCmp2>(a, b);
 }
 
 class NodeCmp3 :public Node {
 private:
 	ptr a, b;
-	public：
-		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
+public:
+	NodeCmp3(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -304,16 +305,16 @@ private:
 		else value = 0.0;
 		version = sym;
 	}
-}
-cgragh::Expression operator >= (cgragh::Expression a, cgragh::Expression b) {
+};
+cgraph::Expression operator >= (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeCmp3>(a, b);
 }
 
 class NodeCmp4 :public Node {
 private:
 	ptr a, b;
-	public：
-		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
+public:
+	NodeCmp4(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -325,16 +326,16 @@ private:
 		else value = 0.0;
 		version = sym;
 	}
-}
-cgragh::Expression operator <= (cgragh::Expression a, cgragh::Expression b) {
+};
+cgraph::Expression operator <= (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeCmp4>(a, b);
 }
 
 class NodeCmp5 :public Node {
 private:
 	ptr a, b;
-	public：
-		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
+public:
+	NodeCmp5(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -346,8 +347,8 @@ private:
 		else value = 0.0;
 		version = sym;
 	}
-}
-cgragh::Expression operator == (cgragh::Expression a, cgragh::Expression b) {
+};
+cgraph::Expression operator == (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeCmp5>(a, b);
 }
 
@@ -384,8 +385,8 @@ public:
 		}
 		version = sym;
 	}
-}
-cgragh::Expression cond(cgragh::Expression a, cgragh::Expression b, cgragh::Expression c) {
+};
+cgraph::Expression cond(cgraph::Expression a, cgraph::Expression b, cgraph::Expression c) {
 	return std::make_shared<NodeCond>(a, b, c);
 }
 
