@@ -97,7 +97,7 @@ public:
 		return { a,b };
 	}
 	void eval(Symbol sym) {
-		if (b->getvalue() == 0) {
+		if (fabs(b->getValue()) < 1e-9) {
 			throw Error("Division by zero");
 		}
 		else {
