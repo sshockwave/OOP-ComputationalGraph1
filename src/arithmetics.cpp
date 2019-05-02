@@ -228,7 +228,7 @@ class NodeSigmoid :public Node {
 private:
 	ptr p;
 public:
-	NodeExp(ptr _p) :p(_p) {}
+	NodeSigmoid(ptr _p) :p(_p) {}
 	std::vector<ptr> getAllPreq() const {
 		return { p };
 	}
