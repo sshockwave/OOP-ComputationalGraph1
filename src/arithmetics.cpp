@@ -207,7 +207,7 @@ class NodeTanh :public Node {
 private:
 	ptr p;
 public:
-	NodeExp(ptr _p) :p(_p) {}
+	NodeTanh(ptr _p) :p(_p) {}
 	std::vector<ptr> getAllPreq() const {
 		return { p };
 	}
