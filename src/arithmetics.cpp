@@ -48,7 +48,7 @@ class NodeSubtract :public Node {
 private:
 	ptr a, b;
 public:
-	NodeSubtract(ptr_a, ptr_b) :a(_a), b(_b) {}
+	NodeSubtract(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -68,7 +68,7 @@ class NodeMultiply :public Node {
 private:
 	ptr a, b;
 public:
-	NodeMultiply(ptr_a, ptr_b) :a(_a), b(_b) {}
+	NodeMultiply(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -81,14 +81,14 @@ public:
 	}
 };
 cgragh::Expression operator *(cgragh::Expression a, cgragh::Expression b) {
-	return std::make_shared<NodeSubtract>(a, b);
+	return std::make_shared<NodeMultiply>(a, b);
 }
 
 class NodeDivide :public Node {
 private:
 	ptr a, b;
 public:
-	NodeSubtract(ptr_a, ptr_b) :a(_a), b(_b) {}
+	NodeDivide(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -134,6 +134,23 @@ Expression print(Expression expr,std::string name,std::ostream & out){
 	return std::make_shared<NodePrint>(static_cast<Node::ptr>(expr),name,out);
 }
 
+class NodeSin :public Node {
+private:
+	ptr p;
+public:
+	NodeSin(ptr _p) :p(_p) {}
+	std::vector<ptr> getAllPreq() const {
+		return { p };
+	}
+	std::vector<ptr> getPreq(Symbol sym)const {
+		if (p->visited == sym)return {};
+		return { p };
+	}
+	void eval(Symbol sym) {
+		value = sin(p->getValue());
+		version = sym;
+	}
+}
 cgragh::Expression sin(cgragh::Expression a) {
 	return std::make_shared<NodeSin>(a);
 }
@@ -142,7 +159,7 @@ class NodeLog :public Node {
 private:
 	ptr p;
 public:
-	NodeLog(ptr_p) :p(_p) {}
+	NodeLog(ptr _p) :p(_p) {}
 	std::vector<ptr> getAllPreq() const {
 		return { p };
 	}
@@ -168,7 +185,7 @@ class NodeExp :public Node {
 private:
 	ptr p;
 public:
-	NodeExp(ptr_p) :p(_p) {}
+	NodeExp(ptr _p) :p(_p) {}
 	std::vector<ptr> getAllPreq() const {
 		return { p };
 	}
@@ -189,7 +206,7 @@ class NodeTanh :public Node {
 private:
 	ptr p;
 public:
-	NodeExp(ptr_p) :p(_p) {}
+	NodeExp(ptr _p) :p(_p) {}
 	std::vector<ptr> getAllPreq() const {
 		return { p };
 	}
@@ -210,7 +227,7 @@ class NodeSigmoid :public Node {
 private:
 	ptr p;
 public:
-	NodeExp(ptr_p) :p(_p) {}
+	NodeExp(ptr _p) :p(_p) {}
 	std::vector<ptr> getAllPreq() const {
 		return { p };
 	}
@@ -233,7 +250,7 @@ class NodeCmp1 :public Node {
 private:
 	ptr a, b;
 	public：
-		NodeCmp1(ptr_a, ptr_b) :a(_a), b(_b) {}
+		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -254,7 +271,7 @@ class NodeCmp2 :public Node {
 private:
 	ptr a, b;
 	public：
-		NodeCmp1(ptr_a, ptr_b) :a(_a), b(_b) {}
+		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -275,7 +292,7 @@ class NodeCmp3 :public Node {
 private:
 	ptr a, b;
 	public：
-		NodeCmp1(ptr_a, ptr_b) :a(_a), b(_b) {}
+		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -296,7 +313,7 @@ class NodeCmp4 :public Node {
 private:
 	ptr a, b;
 	public：
-		NodeCmp1(ptr_a, ptr_b) :a(_a), b(_b) {}
+		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -317,7 +334,7 @@ class NodeCmp5 :public Node {
 private:
 	ptr a, b;
 	public：
-		NodeCmp1(ptr_a, ptr_b) :a(_a), b(_b) {}
+		NodeCmp1(ptr _a, ptr _b) :a(_a), b(_b) {}
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
@@ -338,7 +355,7 @@ class NodeCond :public Node {
 private:
 	ptr a, b, c;
 public:
-	NodeCond(ptr_a, ptr_b, ptr_c) :a(_a), b(_b), c(_c) {};
+	NodeCond(ptr _a, ptr _b, ptr _c) :a(_a), b(_b), c(_c) {};
 	std::vector<ptr> getAllPreq()const {
 		return { a,b,c };
 	}
