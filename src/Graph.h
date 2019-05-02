@@ -3,10 +3,15 @@
 #include <map>
 #include <string>
 
+namespace std{
+	template<> struct owner_less<cgraph::Expression>{
+		bool operator () (cgraph::Expression,cgraph::Expression) const;
+	};
+}
 namespace cgraph{
 	class Graph{
 		private:
-			std::map<Expression,std::string>symbols;
+			std::map<Expression,std::string,std::owner_less<Expression>>symbols;
 			std::map<std::string,Expression>expressions;
 			std::map<std::string,Placeholder>placeholders;
 			std::map<std::string,Constant>constants;
@@ -15,13 +20,13 @@ namespace cgraph{
 			/**
 			 * Graph::define
 			 *
-			 * If the variable did not exist,
-			 * the function inserts the object and returns true.
+			 * If the variable exists,
+			 * the function overrides it.
 			 */
-			bool define(std::string,Expression);
-			bool define(std::string,Placeholder);
-			bool define(std::string,Constant);
-			bool define(std::string,Variable);
+			void define(std::string,Expression);
+			void define(std::string,Placeholder);
+			void define(std::string,Constant);
+			void define(std::string,Variable);
 
 			/**
 			 * Graph::remove
@@ -32,16 +37,15 @@ namespace cgraph{
 			bool remove(std::string);
 			bool remove(Expression);
 
-			std::string getName(Expression);
-			Expression getExpression(std::string);
-			Placeholder getPlaceholder(std::string);
-			Constant getConstant(std::string);
-			Variable getVariable(std::string);
+			std::string getName(Expression) const;
+			Expression getExpression(std::string) const;
+			Placeholder getPlaceholder(std::string) const;
+			Constant getConstant(std::string) const;
+			Variable getVariable(std::string) const;
 
-			std::vector<Expression> getNodeList();
-			std::vector<Expression> getExpressionList();
-			std::vector<Placeholder> getPlaceholderList();
-			std::vector<Constant> getConstantList();
-			std::vector<Variable> getVariableList();
+			std::vector<Expression> getExpressionList() const;
+			std::vector<Placeholder> getPlaceholderList() const;
+			std::vector<Constant> getConstantList() const;
+			std::vector<Variable> getVariableList() const;
 	};
 }
