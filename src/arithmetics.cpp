@@ -101,7 +101,7 @@ public:
 			throw Error("Division by zero");
 		}
 		else {
-			value = a->getValue() / b->getvalue();
+			value = a->getValue() / b->getValue();
 			version = sym;
 		}
 	}
