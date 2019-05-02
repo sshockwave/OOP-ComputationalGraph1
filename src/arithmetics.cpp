@@ -42,7 +42,7 @@ class NodeAdd:public Node{
 		}
 };
 
-cgraph::Expression operator + (cgraph::Expression a,cgraph::Expression b){
+Expression operator + (Expression a,Expression b){
 	return std::make_shared<NodeAdd>(a,b);
 }
 
@@ -63,7 +63,7 @@ public:
 	}
 };
 
-cgraph::Expression operator - (cgraph::Expression a, cgraph::Expression b) {
+Expression operator - (Expression a, Expression b) {
 	return std::make_shared<NodeSubtract>(a, b);
 }
 
@@ -83,7 +83,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression operator * (cgraph::Expression a, cgraph::Expression b) {
+Expression operator * (Expression a, Expression b) {
 	return std::make_shared<NodeMultiply>(a, b);
 }
 
@@ -108,7 +108,7 @@ public:
 		}
 	}
 };
-cgraph::Expression operator / (cgraph::Expression a, cgraph::Expression b) {
+Expression operator / (Expression a, Expression b) {
 	return std::make_shared<NodeDivide>(a, b);
 }
 
@@ -154,7 +154,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression sin (cgraph::Expression a) {
+Expression sin (Expression a) {
 	return std::make_shared<NodeSin>(a);
 }
 
@@ -180,7 +180,7 @@ public:
 		}
 	}
 };
-cgraph::Expression log(cgraph::Expression a) {
+Expression log(Expression a) {
 	return std::make_shared<NodeLog>(a);
 }
 
@@ -201,7 +201,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression exp(cgraph::Expression a) {
+Expression exp(Expression a) {
 	return std::make_shared<NodeExp>(a);
 }
 
@@ -222,7 +222,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression tanh(cgraph::Expression a) {
+Expression tanh(Expression a) {
 	return std::make_shared<NodeTanh>(a);
 }
 
@@ -245,7 +245,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression sigmoid(cgraph::Expression a) {
+Expression sigmoid(Expression a) {
 	return std::make_shared<NodeSigmoid>(a);
 }
 
@@ -266,7 +266,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression operator > (cgraph::Expression a, cgraph::Expression b) {
+Expression operator > (Expression a, Expression b) {
 	return std::make_shared<NodeCmp1>(a, b);
 }
 
@@ -287,7 +287,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression operator < (cgraph::Expression a, cgraph::Expression b) {
+Expression operator < (Expression a, Expression b) {
 	return std::make_shared<NodeCmp2>(a, b);
 }
 
@@ -308,7 +308,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression operator >= (cgraph::Expression a, cgraph::Expression b) {
+Expression operator >= (Expression a, Expression b) {
 	return std::make_shared<NodeCmp3>(a, b);
 }
 
@@ -329,7 +329,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression operator <= (cgraph::Expression a, cgraph::Expression b) {
+Expression operator <= (Expression a, Expression b) {
 	return std::make_shared<NodeCmp4>(a, b);
 }
 
@@ -350,7 +350,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression operator == (cgraph::Expression a, cgraph::Expression b) {
+Expression operator == (Expression a, Expression b) {
 	return std::make_shared<NodeCmp5>(a, b);
 }
 
@@ -388,7 +388,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression cond(cgraph::Expression a, cgraph::Expression b, cgraph::Expression c) {
+Expression cond(Expression a, Expression b, Expression c) {
 	return std::make_shared<NodeCond>(a, b, c);
 }
 
