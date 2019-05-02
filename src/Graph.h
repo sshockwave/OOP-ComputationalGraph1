@@ -3,9 +3,11 @@
 #include <map>
 #include <string>
 
-template<> struct std::owner_less<cgraph::Expression>{
-	bool operator () (cgraph::Expression,cgraph::Expression) const;
-};
+namespace std{
+	template<> struct owner_less<cgraph::Expression>{
+		bool operator () (cgraph::Expression,cgraph::Expression) const;
+	};
+}
 namespace cgraph{
 	class Graph{
 		private:
