@@ -81,7 +81,7 @@ public:
 		version = sym;
 	}
 };
-cgraph::Expression operator - (cgraph::Expression a, cgraph::Expression b) {
+cgraph::Expression operator * (cgraph::Expression a, cgraph::Expression b) {
 	return std::make_shared<NodeMultiply>(a, b);
 }
 
