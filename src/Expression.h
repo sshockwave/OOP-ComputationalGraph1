@@ -12,3 +12,8 @@ namespace cgraph{
 			num_t eval(Symbol=Symbol()) const;
 	};
 }
+namespace std{
+	template<> struct owner_less<cgraph::Expression>{
+		bool operator () (cgraph::Expression,cgraph::Expression) const;
+	};
+}

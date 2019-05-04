@@ -1,11 +1,6 @@
 #include "Graph.h"
 #include "Error.h"
 
-bool std::owner_less<cgraph::Expression>::operator ()
-	(cgraph::Expression a,cgraph::Expression b) const{
-		static std::owner_less<cgraph::Node::ptr>cmp;
-		return cmp(a,b);
-	}
 namespace cgraph{
 	void Graph::define(std::string name,Expression expr){
 		expressions.insert(std::make_pair(name,expr));

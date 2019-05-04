@@ -58,7 +58,15 @@ namespace cgraph{
 
 using namespace cgraph;
 
-num_t eval(Expression expr,std::map<Placeholder,num_t>values){
+/**
+ * eval
+ *
+ * Evaluate expr with placeholder values.
+ *
+ * If you wish, you can call it like this:
+ * `eval(expr,{{a,-1},{b,0.3}})
+ */
+num_t eval(Expression expr,ph_map values){
 	Symbol sym;
 	for(auto it:values){
 		it.first.set(it.second,sym);

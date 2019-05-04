@@ -16,6 +16,7 @@ namespace cgraph{
 			operator Expression() const;
 			void set(num_t v,const Symbol &s) const;
 	};
+	typedef std::map<Placeholder,num_t,std::owner_less<Expression>>ph_map;
 
 	class Constant{
 		private:
@@ -43,4 +44,4 @@ namespace cgraph{
 	};
 }
 
-float eval(cgraph::Expression,std::map<cgraph::Placeholder,cgraph::num_t> ={});
+float eval(cgraph::Expression,cgraph::ph_map ={});
