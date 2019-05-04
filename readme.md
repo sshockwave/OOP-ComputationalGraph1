@@ -15,7 +15,7 @@ make
 Makefile生成步骤：
 1. 生成`.d`依赖关系文件到`dep/`目录；
 2. 再生成`.o`二进制文件到`bin/`中；
-3. 最终程序生成为`dist/main`。
+3. 最终程序生成为`main`。
 
 可以在`Makefile`中调整编译选项`$(CXX_FLAGS)`。
 
@@ -26,7 +26,7 @@ make run
 ```
 或直接运行：
 ```bash
-dist/main
+./main
 ```
 从stdin读入，stdout输出。
 

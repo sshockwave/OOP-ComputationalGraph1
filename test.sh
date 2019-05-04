@@ -2,7 +2,7 @@ rm -rf test/**/*.out
 for file in test/**/*.input
 do
 	echo Running test ${file%.*}
-	if dist/main < $file > ${file%.*}.out
+	if ./main < $file > ${file%.*}.out
 	then echo \\t successfully.
 	else echo \\t Runtime Error! && return 1
 	fi
