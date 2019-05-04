@@ -129,7 +129,7 @@ class NodePrint:public Node{
 		void eval(Symbol sym){
 			version=p->getVersion();
 			value=p->getValue();
-			out<<"Print Operator: "<<name<<"="<<value<<std::endl;
+			out<<"Print Operator: "<<name<<" = "<<value<<std::endl;
 		}
 };
 
