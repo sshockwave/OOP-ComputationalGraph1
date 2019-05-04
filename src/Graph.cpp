@@ -2,21 +2,30 @@
 #include "Error.h"
 
 namespace cgraph{
+	template<class T>inline void updInsert(std::map<std::string,T>&mp,std::string name,T val){
+		auto it=mp.find(name);
+		if(it==mp.end()){
+			mp.insert(std::make_pair(name,val));
+		}else{
+			it->second=val;
+		}
+	}
 	void Graph::define(std::string name,Expression expr){
-		expressions.insert(std::make_pair(name,expr));
+		updInsert(expressions,name,expr);
+		symbols[expr]=name;
 	}
 	void Graph::define(std::string name,Placeholder ph){
 		define(name,static_cast<Expression>(ph));
-		placeholders.insert(std::make_pair(name,ph));
+		updInsert(placeholders,name,ph);
 	}
 	void Graph::define(std::string name,Constant cnst){
 		define(name,static_cast<Expression>(cnst));
-		constants.insert(std::make_pair(name,cnst));
+		updInsert(constants,name,cnst);
 	}
 	void Graph::define(std::string name,Variable varb){
 		//var is a keyword in many languages
 		define(name,static_cast<Expression>(varb));
-		variables.insert(std::make_pair(name,varb));
+		updInsert(variables,name,varb);
 	}
 
 	template<class T>inline void removeFromMap(T &m,std::string name,Expression expr){
