@@ -107,6 +107,11 @@ int main(){
 			std::cin>>value;
 			cgraph::Constant cnst(value);
 			G.define(name,cnst);
+		}else if(type=='V'){
+			cgraph::num_t value;
+			std::cin>>value;
+			cgraph::Variable cnst(value);
+			G.define(name,cnst);
 		}else{
 			invalidInput(std::string("unexpected sink type ")+type);
 		}
@@ -143,6 +148,27 @@ int main(){
 			try{
 				outputs[i]=startEval(str);
 				std::cout<<outputs[i]<<std::endl;
+			}catch(cgraph::Error e){
+				std::cout<<"ERROR: "<<e.what()<<std::endl;
+			}
+		}else if(op=="SETANSWER"){
+			std::string name;
+			int id;
+			std::cin>>name>>id;
+			if(outputs.find(id)==outputs.end()){
+				invalidInput("Operation #"+std::to_string(id)+" has no output");
+			}
+			try{
+				G.getVariable(name).set(outputs[id]);
+			}catch(cgraph::Error e){
+				std::cout<<"ERROR: "<<e.what()<<std::endl;
+			}
+		}else if(op=="SETCONSTANT"){
+			std::string name;
+			cgraph::num_t value;
+			std::cin>>name>>value;
+			try{
+				G.getVariable(name).set(value);
 			}catch(cgraph::Error e){
 				std::cout<<"ERROR: "<<e.what()<<std::endl;
 			}
