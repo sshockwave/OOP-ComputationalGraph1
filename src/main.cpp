@@ -76,18 +76,21 @@ inline cgraph::Expression parseExpr(std::string expr){
 	}
 	invalidInput("can not parse expr '"+expr+"'");
 }
-inline cgraph::num_t startEval(){
+inline cgraph::num_t startEval(std::string str){
+	std::stringstream ss(str);
 	std::string name;
-	int phcnt;
-	std::cin>>name>>phcnt;
+	ss>>name;
 	cgraph::ph_map mp;
-	for(int i=1;i<=phcnt;i++){
-		std::string name;
-		cgraph::num_t value;
-		std::cin>>name>>value;
-		mp[G.getPlaceholder(name)]=value;
-	}
-	return eval(G.getExpression(name),mp);
+	int phcnt;
+	if(ss>>phcnt){
+		for(int i=1;i<=phcnt;i++){
+			std::string name;
+			cgraph::num_t value;
+			ss>>name>>value;
+			mp[G.getPlaceholder(name)]=value;
+		}
+		return eval(G.getExpression(name),mp);
+	}else return G.getExpression(name).eval();
 }
 int main(){
 	int tot;
@@ -135,8 +138,10 @@ int main(){
 		std::string op;
 		std::cin>>op;
 		if(op=="EVAL"){
+			std::string str;
+			std::getline(std::cin,str);
 			try{
-				outputs[i]=startEval();
+				outputs[i]=startEval(str);
 				std::cout<<outputs[i]<<std::endl;
 			}catch(cgraph::Error e){
 				std::cout<<"ERROR: "<<e.what()<<std::endl;
