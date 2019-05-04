@@ -5,7 +5,7 @@
 #include <sstream>
 
 inline void invalidInput(std::string msg){
-	std::cerr<<"Invalid input: "<<msg<<std::endl;
+	std::cout<<"Invalid input: "<<msg<<std::endl;
 	exit(0);
 }
 
