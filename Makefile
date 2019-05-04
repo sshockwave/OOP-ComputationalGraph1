@@ -4,10 +4,11 @@ CXX_FLAGS=-std=c++14 -g
 all: dist/main
 run:
 	dist/main
-test:
-	echo No tests specified.
+test: dist/main test.sh
+	@chmod +x test.sh
+	./test.sh
 clean:
-	rm -rf bin dep dist
+	rm -rf bin dep dist test/*.out
 
 src=$(patsubst src/%.cpp,%,$(wildcard src/*.cpp))
 

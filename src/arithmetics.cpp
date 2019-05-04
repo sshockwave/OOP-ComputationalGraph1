@@ -129,7 +129,7 @@ class NodePrint:public Node{
 		void eval(Symbol sym){
 			version=p->getVersion();
 			value=p->getValue();
-			out<<"Print Operator: "<<name<<"="<<value<<std::endl;
+			out<<"Print Operator: "<<name<<" = "<<value<<std::endl;
 		}
 };
 
@@ -218,7 +218,10 @@ public:
 		return { p };
 	}
 	void eval(Symbol sym) {
-		value = 1.0 / (exp(p->getValue()) + exp(-p->getValue()));
+		if(p->getVersion()==version)return;
+		num_t a = exp(p->getValue());
+		num_t b = exp(-p->getValue());
+		value = (a - b) / (a + b);
 		version = sym;
 	}
 };
@@ -239,9 +242,8 @@ public:
 		return { p };
 	}
 	void eval(Symbol sym) {
-		if (p->getValue() > 0)value = 1.0;
-		else if (p->getValue() == 0)value == 0.0;
-		else value == -1.0;
+		if(p->getVersion()==version)return;
+		value = 1/(1+exp(-p->getValue()));
 		version = sym;
 	}
 };
@@ -257,7 +259,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -278,7 +280,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -299,7 +301,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -320,7 +322,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -341,7 +343,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -362,7 +364,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b,c };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		std::vector<ptr>list;
 		if (a->visited != sym) {
 			list.push_back(a);

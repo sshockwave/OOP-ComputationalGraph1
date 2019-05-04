@@ -18,4 +18,6 @@ jobs:
           path: dist
       - run:
           name: Run tests
-          command: make test
+          command: |
+            apt-get install -y python3
+            make test

@@ -7,6 +7,8 @@ namespace cgraph{
 		private:
 			class NodePlaceholder: public Node{
 				public:
+					std::vector<Node::ptr> getPreq(Symbol) const;
+					std::vector<Node::ptr> getAllPreq() const;
 					void set(num_t,const Symbol&);
 					void eval(Symbol) override;
 			};
@@ -16,6 +18,7 @@ namespace cgraph{
 			operator Expression() const;
 			void set(num_t v,const Symbol &s) const;
 	};
+	typedef std::map<Placeholder,num_t,std::owner_less<Expression>>ph_map;
 
 	class Constant{
 		private:
@@ -30,6 +33,8 @@ namespace cgraph{
 		private:
 			class NodeVariable: public Node{
 				public:
+					std::vector<Node::ptr> getPreq(Symbol) const;
+					std::vector<Node::ptr> getAllPreq() const;
 					void set(num_t);
 					void eval(Symbol) override;
 			};
@@ -43,4 +48,4 @@ namespace cgraph{
 	};
 }
 
-float eval(cgraph::Expression,std::map<cgraph::Placeholder,cgraph::num_t> ={});
+float eval(cgraph::Expression,cgraph::ph_map ={});

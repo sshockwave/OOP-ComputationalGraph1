@@ -98,4 +98,8 @@ def check(source_file, target_file):
     print(info, file=sys.stderr)
     return correct_flag
 
-check(sys.argv[2], sys.argv[3])
+flag=check(sys.argv[1], sys.argv[2])
+if flag:
+    sys.exit(0)
+else:
+    sys.exit(1)

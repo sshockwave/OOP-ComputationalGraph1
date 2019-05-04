@@ -38,3 +38,6 @@ dist/
 
 # Editor Temporary Files
 .*.swp
+
+# Test files
+test/*.out
