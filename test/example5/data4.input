@@ -1,0 +1,37 @@
+10
+pt P
+ru P
+g V 0.4160
+sm V -3.9974
+cz V 0.0000
+hl V 3.3222
+h P
+uq C -4.5876
+m V 0.5578
+k V 2.2044
+11
+e = m + sm
+s = g * cz
+t = h * h
+q = sm * ru
+mn = TANH m
+ci = LOG e
+t = h * t
+ox = e * uq
+s = SIN cz
+q = t / k
+ci = q * h
+13
+EVAL k
+EVAL ox
+EVAL pt 1 pt -0.2383
+EVAL ox
+SETCONSTANT sm 0.0000
+EVAL cz
+EVAL k
+EVAL e
+EVAL hl
+EVAL cz
+EVAL ci 1 h 0.6804
+EVAL cz
+EVAL q 1 h -3.4381

@@ -1,0 +1,39 @@
+6
+i P
+f P
+ef C 2.3998
+n C -3.5688
+cy C -4.7075
+ml P
+15
+q = SIGMOID f
+q = LOG ml
+k = SIN i
+o = LOG f
+o = SIN i
+kh = EXP q
+q = SIGMOID i
+j = LOG q
+u = SIGMOID ef
+m = SIN cy
+gb = EXP i
+q = EXP j
+em = LOG k
+kh = EXP i
+jw = TANH ef
+15
+EVAL q 1 i 0.4210
+EVAL m
+EVAL ml 1 ml 0.0000
+EVAL k 1 i 0.9649
+EVAL o 1 i 0.0000
+EVAL gb 1 i 0.4847
+EVAL kh 1 i 4.4837
+EVAL ml 1 ml -1.9067
+EVAL i 1 i 1.7365
+EVAL cy
+EVAL n
+EVAL gb 1 i -0.5817
+EVAL f 1 f -0.8668
+EVAL o 1 i 0.1367
+EVAL cy

@@ -1,0 +1,33 @@
+5
+z C 0.0000
+hq P
+lk C -0.1251
+vt P
+bp C -2.2818
+13
+wv = SIN bp
+bv = EXP z
+xo = EXP hq
+ud = LOG bp
+qx = EXP xo
+xm = SIN bp
+xm = EXP z
+rx = SIN xo
+bv = TANH hq
+mw = SIGMOID bp
+r = SIN lk
+rx = LOG xo
+r = SIGMOID wv
+12
+EVAL mw
+EVAL lk
+EVAL wv
+EVAL rx 1 hq 1.9425
+EVAL r
+EVAL qx 1 hq 2.8240
+EVAL bv 1 hq 0.0000
+EVAL xo 1 hq 0.0000
+EVAL qx 1 hq 1.6427
+EVAL bp
+EVAL bp
+EVAL xo 1 hq 3.4444

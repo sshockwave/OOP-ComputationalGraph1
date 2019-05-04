@@ -1,0 +1,35 @@
+7
+p C 4.5308
+cq C 4.9400
+ly P
+xh P
+h C 1.0128
+mn C 4.0102
+w P
+13
+b = COND p xh cq
+e = COND b xh w
+ot = COND p w b
+g = b < p
+g = PRINT b
+fe = COND b h h
+k = ot + p
+qi = fe + e
+ot = COND g xh fe
+xi = COND e k ot
+b = PRINT g
+db = EXP w
+g = COND w k h
+12
+EVAL cq
+EVAL g 2 xh -2.1388 w 3.4848
+EVAL h
+EVAL ly 1 ly 3.0312
+EVAL db 1 w -0.6692
+EVAL cq
+EVAL ot 1 xh 1.1348
+EVAL g 2 xh 1.0219 w 3.6367
+EVAL ly 1 ly 0.0000
+EVAL g 0
+EVAL w 1 w -0.2109
+EVAL e 0

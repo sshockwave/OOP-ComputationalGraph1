@@ -1,0 +1,34 @@
+6
+h P
+nh P
+vn P
+o P
+ol P
+l C -1.4043
+14
+nd = PRINT ol
+io = PRINT h
+oj = PRINT nh
+oj = PRINT ol
+j = PRINT nd
+lf = PRINT ol
+s = PRINT lf
+lb = nd / oj
+io = PRINT lb
+vi = oj + lf
+lb = PRINT h
+lf = PRINT nd
+sx = PRINT oj
+sx = PRINT s
+11
+EVAL sx 1 ol 0.0000
+EVAL io 1 ol 4.3581
+EVAL sx 1 ol -2.7812
+EVAL lf 1 ol 2.5534
+EVAL j 1 ol -0.2588
+EVAL oj 1 ol -0.2675
+EVAL s 1 ol 0.0000
+EVAL s 1 ol -4.6817
+EVAL io 1 ol 4.4075
+EVAL s 1 ol -1.4476
+EVAL nd 1 ol 0.0000

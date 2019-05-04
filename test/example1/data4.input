@@ -1,0 +1,38 @@
+10
+hq C 0.1258
+mc P
+dg C 0.1027
+x C -2.6382
+v C 2.4743
+zs P
+r P
+lc P
+qb P
+hx C -3.0385
+11
+q = lc - hx
+g = x + r
+p = lc / hq
+q = zs - x
+p = hq * x
+m = zs / x
+p = x / x
+q = qb / lc
+zj = m + p
+p = zs / hx
+q = p - dg
+14
+EVAL x
+EVAL p 1 zs 2.5998
+EVAL r 1 r -1.8180
+EVAL dg
+EVAL hq
+EVAL hq
+EVAL hx
+EVAL qb 1 qb 0.0000
+EVAL v
+EVAL zs 1 zs 0.0000
+EVAL hx
+EVAL q 0
+EVAL zj 1 zs -2.1256
+EVAL q 1 zs -2.1897

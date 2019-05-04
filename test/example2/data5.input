@@ -1,0 +1,34 @@
+4
+z P
+f C 0.0000
+hg P
+d C -4.9683
+12
+x = EXP hg
+x = TANH z
+ec = SIN d
+y = SIGMOID ec
+o = SIGMOID d
+md = LOG y
+yk = SIGMOID md
+o = EXP hg
+n = SIGMOID z
+en = SIGMOID o
+yk = SIGMOID n
+n = SIN yk
+15
+EVAL hg 1 hg 0.0000
+EVAL y
+EVAL ec
+EVAL z 1 z -3.3918
+EVAL d
+EVAL hg 1 hg 2.4131
+EVAL o 1 hg 0.8916
+EVAL hg 1 hg -2.4476
+EVAL yk 1 z -4.8177
+EVAL md
+EVAL y
+EVAL y
+EVAL ec
+EVAL z 1 z 0.6051
+EVAL en 1 hg 0.8234

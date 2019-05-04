@@ -1,0 +1,33 @@
+5
+ig P
+bi P
+x P
+bw P
+v P
+14
+n = bw / bw
+n = ig + bw
+s = v - bw
+p = x / v
+b = x * bi
+k = n / b
+hg = k - bi
+ih = hg + bi
+b = x + n
+ih = p - bw
+p = p * v
+s = x - hg
+hg = ig - bw
+b = b - hg
+11
+EVAL n 2 ig -1.8382 bw -2.8541
+EVAL bi 1 bi 0.0226
+EVAL p 2 v 0.0000 x -1.2140
+EVAL ig 1 ig -0.8263
+EVAL bw 1 bw 3.9104
+EVAL k 4 ig 0.0000 bw -4.4200 bi 0.0000 x -0.4960
+EVAL bi 1 bi -4.1485
+EVAL n 2 ig 0.0000 bw 2.8251
+EVAL x 1 x 4.7867
+EVAL s 4 ig 4.4902 bw -3.9901 bi 0.0000 x -1.5320
+EVAL n 2 ig 0.0000 bw 0.0000

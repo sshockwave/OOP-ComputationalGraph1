@@ -1,0 +1,29 @@
+5
+l C 0.6027
+yt P
+u P
+w P
+h P
+11
+hx = w > w
+i = h < u
+qd = l == hx
+qd = l <= w
+p = hx == u
+x = hx > p
+d = h <= x
+o = h <= u
+p = o == x
+o = o < u
+p = x <= h
+10
+EVAL l
+EVAL d 3 w 2.7212 h 2.3155 u 0.0000
+EVAL hx 1 w 2.1716
+EVAL qd 1 w 0.0000
+EVAL hx 1 w -2.6526
+EVAL d 3 w 3.7283 h 0.6562 u 4.0555
+EVAL qd 0
+EVAL w 1 w 4.8914
+EVAL p 3 w 2.4752 h 2.4150 u 0.0000
+EVAL x 2 w 4.9877 u -2.9997

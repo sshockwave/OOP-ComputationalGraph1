@@ -1,0 +1,31 @@
+6
+qh P
+ck P
+es P
+fv C 0.0000
+x P
+rq P
+12
+z = COND x fv qh
+fg = COND ck fv ck
+xz = COND ck qh fv
+dq = COND fv es qh
+z = COND z qh dq
+a = fv < x
+rt = rq >= fv
+dq = z > es
+tk = ck >= rt
+z = COND dq xz xz
+dq = dq * a
+dq = x / rt
+10
+EVAL fg 1 ck -2.0815
+EVAL fv
+EVAL fv
+EVAL rq 1 rq -4.2015
+EVAL tk 2 rq 0.0000 ck 1.3669
+EVAL x 1 x 3.8122
+EVAL fg 1 ck 1.1151
+EVAL x 1 x -3.7422
+EVAL z 2 es 3.3778 qh 4.3095
+EVAL rq 0

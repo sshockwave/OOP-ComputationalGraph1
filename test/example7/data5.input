@@ -1,0 +1,40 @@
+8
+xf P
+b P
+yc P
+bq P
+s C -2.8460
+d P
+o C 3.5157
+bf P
+14
+ci = COND bf o b
+e = COND s ci xf
+i = COND o e ci
+e = COND xf ci bf
+e = COND d s b
+e = COND i e i
+k = COND d e xf
+tk = COND k k d
+tk = COND xf o e
+cx = COND i bq o
+wb = COND cx xf s
+e = k * s
+ci = COND e bf xf
+as = o < e
+15
+EVAL as 4 b -3.6938 d 0.2278 xf -1.8493 bf -4.3130
+EVAL wb 4 bq 0.3825 b 0.1293 xf 1.7520 bf -1.1543
+EVAL s
+EVAL cx 4 xf 0.0000 b -2.6141 bq 0.0000 bf 0.0000
+EVAL e 2 d 0.0000 bf 0.0000
+EVAL b 1 b -3.9663
+EVAL ci 2 xf -0.0912 b 1.5598
+EVAL tk 4 b -4.7297 d 1.4843 xf 1.8102 bf 2.1172
+EVAL ci 4 xf 0.0000 b 4.7813 d 0.0000 bf 1.9516
+EVAL s
+EVAL ci 4 xf 0.0000 b 0.0000 d -4.9313 bf -0.4742
+EVAL yc 1 yc -1.4077
+EVAL b 1 b -1.5424
+EVAL d 1 d 3.4106
+EVAL s

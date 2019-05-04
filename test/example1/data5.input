@@ -1,0 +1,40 @@
+8
+di C 0.0000
+i C -1.8240
+e C 0.0000
+w P
+f C -0.5760
+nv C 0.0000
+l P
+sc P
+14
+h = di * w
+to = w + sc
+z = h - nv
+h = e / nv
+z = sc * z
+wc = to * z
+z = l + wc
+y = l / to
+qv = l * h
+qv = y / wc
+qv = nv - sc
+qv = di - h
+y = z / nv
+to = to - wc
+15
+EVAL z 3 l -0.2719 sc -1.7478 w 0.0000
+EVAL sc 1 sc -0.3505
+EVAL l 1 l 0.0000
+EVAL di
+EVAL y 3 l -2.6550 sc 0.1294 w 2.1455
+EVAL l 1 l 0.0000
+EVAL to 2 w 0.0000 sc 0.0000
+EVAL l 1 l 0.0000
+EVAL l 1 l 0.0000
+EVAL y 3 l 0.0000 sc -0.8574 w -1.5036
+EVAL l 1 l -2.4151
+EVAL y 3 l -3.1947 sc 1.8046 w 0.0000
+EVAL w 1 w -2.4268
+EVAL sc 1 sc 4.0138
+EVAL qv

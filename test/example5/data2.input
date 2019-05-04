@@ -1,0 +1,37 @@
+7
+o V 0.0619
+hu P
+l P
+j V 0.0000
+oy V 3.5433
+h P
+mh C 0.0000
+15
+eu = oy * j
+gm = EXP eu
+t = TANH mh
+f = eu - mh
+dr = SIGMOID eu
+eu = oy * eu
+gm = SIGMOID h
+v = gm / hu
+eu = v * dr
+ab = j - eu
+nq = j + h
+gm = j + j
+gm = oy * v
+dr = o * v
+ab = hu + nq
+12
+EVAL f
+SETCONSTANT o 0.1776
+EVAL h 1 h 1.5236
+SETANSWER oy 3
+EVAL t
+EVAL dr 2 h 0.0000 hu 0.0000
+SETANSWER o 1
+EVAL v 2 h -4.8136 hu -1.9827
+SETANSWER oy 5
+EVAL ab 2 h 0.0000 hu 0.0000
+EVAL hu 1 hu 0.0000
+EVAL v 2 h 0.0000 hu -0.2665

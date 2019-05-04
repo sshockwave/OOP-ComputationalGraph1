@@ -1,0 +1,33 @@
+6
+pv P
+nb C 4.4878
+xc C 0.0000
+w P
+r C -1.1751
+vc P
+10
+q = vc >= r
+ne = xc == vc
+z = w <= xc
+db = xc <= pv
+yg = db <= r
+g = ne < yg
+g = xc == q
+ne = xc <= xc
+yg = z > q
+db = pv > ne
+14
+EVAL g 1 vc 0.5627
+EVAL vc 1 vc 0.0000
+EVAL db 1 pv -1.6859
+EVAL r
+EVAL nb
+EVAL g 1 vc 0.0000
+EVAL db 1 pv 2.1726
+EVAL xc
+EVAL g 1 vc -4.8886
+EVAL w 1 w -0.9894
+EVAL w 1 w 1.5384
+EVAL g 1 vc 4.7525
+EVAL q 1 vc -0.2517
+EVAL vc 1 vc 3.3060

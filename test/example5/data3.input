@@ -1,0 +1,33 @@
+8
+o C -1.9887
+dv V -3.1363
+gw C 2.7805
+h V -0.1523
+n V 0.0000
+qp V 0.0000
+dl V 0.0000
+zu V -4.5255
+10
+fn = TANH gw
+ry = fn * dv
+e = n * fn
+xo = n / qp
+xo = xo / ry
+ry = dv + h
+jy = SIN xo
+rh = o / zu
+fn = gw * zu
+e = ry / o
+12
+EVAL o
+EVAL dv
+SETCONSTANT dv -3.4607
+SETCONSTANT dv 0.0000
+SETANSWER dl 1
+EVAL xo
+EVAL qp
+EVAL dv
+EVAL n
+EVAL e
+EVAL dv
+EVAL zu

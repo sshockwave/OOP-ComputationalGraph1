@@ -1,0 +1,35 @@
+5
+yo P
+y C 0.0000
+ca P
+jp C -1.0222
+pe P
+12
+ru = PRINT jp
+x = PRINT y
+qd = PRINT x
+qd = PRINT qd
+j = PRINT ca
+xw = LOG qd
+lk = PRINT y
+j = PRINT qd
+x = TANH x
+qd = PRINT jp
+lk = PRINT pe
+u = qd / x
+15
+EVAL pe 1 pe -1.2244
+EVAL y
+EVAL ca 1 ca -3.4610
+EVAL j
+EVAL yo 1 yo 1.8638
+EVAL ru
+EVAL ru
+EVAL ru
+EVAL qd
+EVAL ca 1 ca 1.1859
+EVAL ca 1 ca 2.6417
+EVAL yo 1 yo 0.0000
+EVAL x
+EVAL yo 1 yo 0.0000
+EVAL jp

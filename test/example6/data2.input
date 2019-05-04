@@ -1,0 +1,39 @@
+7
+ev C 4.7028
+m C 3.6776
+oi C 3.7850
+w P
+ls P
+gt P
+vw C 0.0000
+14
+dm = ev >= gt
+k = m == w
+yi = vw < m
+e = ls < w
+ph = ls == vw
+k = k > yi
+dm = dm == m
+z = k < gt
+ph = k <= dm
+ph = k <= vw
+e = w < k
+e = dm >= w
+ky = vw >= e
+e = ph == z
+15
+EVAL dm 1 gt 0.0000
+EVAL ph 1 w 0.0000
+EVAL dm 1 gt 0.0000
+EVAL e 2 w 4.2101 gt -2.1303
+EVAL oi
+EVAL dm 1 gt 2.6191
+EVAL dm 1 gt 0.0000
+EVAL ls 1 ls -2.8073
+EVAL gt 1 gt -3.7826
+EVAL m
+EVAL dm 1 gt 3.3056
+EVAL ev
+EVAL k 1 w -1.9999
+EVAL yi
+EVAL gt 1 gt 4.0226
