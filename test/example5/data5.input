@@ -1,0 +1,36 @@
+7
+i V -0.7434
+o V -1.2646
+g C -0.1307
+gx V -0.5941
+mj C 0.0000
+ka V 0.0000
+uo V 2.8444
+11
+m = mj * uo
+m = EXP o
+c = ka / mj
+sj = EXP o
+k = sj + ka
+a = EXP i
+sj = g / o
+m = k + m
+df = gx - i
+m = EXP k
+m = i - a
+15
+EVAL sj
+EVAL o
+EVAL i
+EVAL a
+EVAL k
+EVAL uo
+EVAL m
+EVAL ka
+EVAL df
+EVAL o
+SETANSWER o 9
+SETCONSTANT gx -2.7560
+SETCONSTANT gx 1.2873
+EVAL gx
+EVAL o

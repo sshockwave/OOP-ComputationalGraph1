@@ -1,0 +1,46 @@
+PRINT operator: ol = 0.0000
+PRINT operator: lf = 0.0000
+PRINT operator: s = 0.0000
+0.0000
+-------------------------
+PRINT operator: ol = 4.3581
+PRINT operator: ol = 4.3581
+PRINT operator: lb = 1.0000
+1.0000
+-------------------------
+PRINT operator: ol = -2.7812
+PRINT operator: lf = -2.7812
+PRINT operator: s = -2.7812
+-2.7812
+-------------------------
+PRINT operator: ol = 2.5534
+PRINT operator: nd = 2.5534
+2.5534
+-------------------------
+PRINT operator: ol = -0.2588
+PRINT operator: nd = -0.2588
+-0.2588
+-------------------------
+PRINT operator: ol = -0.2675
+-0.2675
+-------------------------
+PRINT operator: ol = 0.0000
+PRINT operator: lf = 0.0000
+0.0000
+-------------------------
+PRINT operator: ol = -4.6817
+PRINT operator: lf = -4.6817
+-4.6817
+-------------------------
+PRINT operator: ol = 4.4075
+PRINT operator: ol = 4.4075
+PRINT operator: lb = 1.0000
+1.0000
+-------------------------
+PRINT operator: ol = -1.4476
+PRINT operator: lf = -1.4476
+-1.4476
+-------------------------
+PRINT operator: ol = 0.0000
+0.0000
+-------------------------

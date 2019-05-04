@@ -1,0 +1,35 @@
+7
+cj P
+eg C 0.0000
+f P
+pv C -1.6619
+h P
+wn C 2.1612
+px C -4.9772
+12
+j = SIGMOID pv
+me = LOG pv
+ke = TANH eg
+ke = TANH h
+ih = LOG me
+ei = SIN me
+ud = EXP ke
+i = EXP h
+ei = LOG ud
+me = TANH cj
+me = SIN eg
+ud = LOG me
+13
+EVAL cj 1 cj 0.0000
+EVAL ih
+EVAL f 1 f -1.9620
+EVAL ei 1 h 2.0465
+EVAL ke 0
+EVAL me
+EVAL wn
+EVAL ih
+EVAL ud
+EVAL ei 1 h 2.6374
+EVAL ke 1 h -3.3396
+EVAL ke 1 h 2.2387
+EVAL eg

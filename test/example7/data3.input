@@ -1,0 +1,31 @@
+5
+zi C 2.4882
+ne P
+gs C -0.9922
+w C -4.3986
+j C 2.6671
+12
+nc = COND j ne j
+nt = w / j
+is = COND zi nt j
+ax = COND is gs is
+is = ax > gs
+ax = j + nt
+nc = is < zi
+mo = j > ax
+kt = COND ne zi ax
+nc = COND is zi mo
+of = COND ne j j
+ks = COND mo gs nc
+11
+EVAL nc
+EVAL nc
+EVAL gs
+EVAL mo
+EVAL j
+EVAL ax
+EVAL nc
+EVAL nt
+EVAL w
+EVAL gs
+EVAL ne 1 ne 0.0000

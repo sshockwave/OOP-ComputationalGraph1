@@ -1,0 +1,36 @@
+5
+el V -2.4335
+do V -2.3034
+nr V 2.2103
+ho V -0.2804
+yz P
+13
+q = EXP ho
+n = ho + el
+n = n * el
+mg = ho + nr
+a = q - ho
+ie = a / a
+n = n - nr
+u = EXP a
+vh = mg + ie
+ie = SIGMOID n
+r = nr - a
+mg = r * yz
+ml = vh + u
+15
+EVAL do
+EVAL vh
+EVAL vh
+EVAL q
+EVAL mg 1 yz -0.2421
+SETANSWER el 4
+EVAL ho
+EVAL mg 1 yz 3.6671
+SETANSWER ho 5
+EVAL mg 1 yz 0.4400
+EVAL u
+EVAL ho
+EVAL u
+EVAL u
+SETANSWER ho 2

@@ -1,0 +1,38 @@
+9
+fd P
+i P
+kn C 0.0000
+ib P
+zv P
+r C 0.8774
+j C 0.6635
+q P
+o P
+13
+n = q - r
+rw = n + o
+p = zv * j
+s = ib + rw
+rw = n - rw
+hd = s + rw
+p = j - p
+wg = rw * q
+s = r / p
+bu = p / o
+rw = q * r
+s = p - wg
+wg = s - o
+13
+EVAL o 1 o 2.7957
+EVAL hd 3 ib 4.5130 q 3.1221 o 0.7560
+EVAL n 1 q -3.7181
+EVAL j
+EVAL fd 1 fd -2.0276
+EVAL zv 1 zv 2.0271
+EVAL hd 3 ib -3.9102 q -4.0256 o 0.0000
+EVAL wg 3 o -0.9174 q -1.0441 zv 0.0000
+EVAL kn
+EVAL wg 3 o 2.3692 q 1.5843 zv -4.0506
+EVAL rw 1 q -0.9786
+EVAL wg 0
+EVAL zv 1 zv 0.0000

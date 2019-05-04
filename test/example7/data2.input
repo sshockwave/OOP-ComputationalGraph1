@@ -1,0 +1,39 @@
+8
+l P
+wy P
+s P
+x P
+o C -0.9007
+kg C 0.0000
+hf C -4.9117
+v C 0.0000
+13
+be = COND v l hf
+c = COND kg o v
+zm = s + hf
+zm = COND x be o
+zm = s == s
+c = COND hf zm s
+zm = wy + l
+be = COND kg c s
+gi = o < hf
+rx = COND x x be
+rx = COND v hf gi
+zm = COND hf x zm
+z = COND v o rx
+15
+EVAL rx
+EVAL gi
+EVAL l 1 l -2.9260
+EVAL o
+EVAL x 1 x -2.5194
+EVAL be 1 s 0.0000
+EVAL gi
+EVAL l 1 l 0.0000
+EVAL be 1 s 3.7039
+EVAL c 1 s 0.0000
+EVAL s 1 s 0.0000
+EVAL z
+EVAL l 1 l 0.2125
+EVAL wy 1 wy -0.9409
+EVAL rx

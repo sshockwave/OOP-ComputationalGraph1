@@ -1,0 +1,38 @@
+6
+mu C -1.5148
+v P
+e P
+uz P
+w C 0.0000
+vy P
+14
+d = w / w
+o = uz + vy
+rm = e + w
+k = v + e
+d = rm - e
+z = w / uz
+z = uz / mu
+r = w - w
+o = v + d
+r = z - r
+k = z + k
+j = e * o
+rm = rm / j
+z = v - o
+15
+EVAL o 2 v 0.8246 e -4.4717
+EVAL d 1 e -2.6204
+EVAL v 1 v 0.0000
+EVAL v 1 v 4.2079
+EVAL d 1 e -4.9199
+EVAL mu
+EVAL z 2 v -4.2990 e 2.3794
+EVAL v 1 v 3.7102
+EVAL uz 1 uz 3.9078
+EVAL uz 1 uz -1.1872
+EVAL j 2 v -4.6256 e 4.8802
+EVAL mu
+EVAL mu
+EVAL k 3 uz -1.0589 v 0.3477 e 3.9607
+EVAL z 2 v 2.1687 e 0.0000

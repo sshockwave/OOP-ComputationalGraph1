@@ -1,0 +1,32 @@
+5
+q P
+y P
+ig C -0.2815
+vz P
+zp P
+12
+oh = q / zp
+oh = PRINT zp
+ew = PRINT y
+nk = y + ig
+g = PRINT y
+oh = ew - ig
+n = oh * y
+of = n + q
+oh = PRINT g
+hz = PRINT of
+oh = PRINT oh
+oh = ig + of
+12
+EVAL vz 1 vz -1.5607
+EVAL oh 2 q -2.9565 y 0.8180
+EVAL nk 1 y 0.9690
+EVAL nk 1 y 4.1687
+EVAL of 2 q 2.2383 y -0.8829
+EVAL of 2 q -1.1767 y -0.3421
+EVAL zp 1 zp -3.8410
+EVAL ew 1 y 1.2910
+EVAL oh 2 q -0.3264 y 0.0000
+EVAL vz 1 vz 0.0000
+EVAL oh 2 q 0.0000 y -2.3960
+EVAL y 1 y -1.4601

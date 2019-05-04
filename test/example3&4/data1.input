@@ -1,0 +1,35 @@
+9
+ci C 3.3179
+p P
+o C 0.1689
+zx P
+cf C 0.9261
+tr P
+m C -1.2449
+wq C 0.0000
+q C 0.0937
+10
+b = tr + cf
+t = PRINT m
+b = PRINT zx
+zm = t * p
+w = PRINT wq
+z = PRINT cf
+b = PRINT p
+z = PRINT b
+b = PRINT z
+zm = tr - wq
+13
+EVAL z 1 p -2.1499
+EVAL w
+EVAL p 1 p 0.8696
+EVAL zm 1 tr -3.9156
+EVAL b 1 p -2.1112
+EVAL q
+EVAL ci
+EVAL o
+EVAL t
+EVAL w
+EVAL t
+EVAL cf
+EVAL cf

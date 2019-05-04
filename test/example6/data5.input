@@ -1,0 +1,35 @@
+4
+gm P
+v C 0.5715
+s C -2.6006
+ha P
+14
+p = ha < v
+j = s == v
+ok = s == j
+j = v >= p
+ix = p <= gm
+ro = ok == j
+ou = gm < p
+ou = s > gm
+t = s == s
+t = gm > s
+xs = gm <= s
+p = ha < gm
+p = ou < p
+ro = ha > gm
+14
+EVAL s
+EVAL ro 2 gm 2.5722 ha 3.4889
+EVAL ok
+EVAL j 1 ha -3.5502
+EVAL t 1 gm 4.1940
+EVAL ro 2 gm 4.3400 ha 0.0000
+EVAL s
+EVAL j 1 ha 2.5018
+EVAL ix 2 gm 1.1150 ha 0.0000
+EVAL j 1 ha 0.0000
+EVAL j 1 ha 0.0000
+EVAL v
+EVAL ok
+EVAL xs 1 gm -0.3206

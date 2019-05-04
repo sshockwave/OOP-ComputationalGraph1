@@ -1,0 +1,34 @@
+6
+oh P
+u C 0.0000
+s P
+wg P
+c C -4.8000
+w C 4.5845
+10
+ai = w >= wg
+gt = w == w
+b = w >= s
+af = wg <= ai
+gw = s > u
+i = af < af
+e = u <= s
+cb = w == c
+i = cb >= e
+sl = w >= gw
+15
+EVAL oh 1 oh 0.0000
+EVAL oh 1 oh 4.9631
+EVAL gw 1 s 0.0000
+EVAL wg 1 wg 4.7873
+EVAL ai 1 wg 0.0000
+EVAL e 0
+EVAL w
+EVAL gt
+EVAL b 1 s 0.0000
+EVAL oh 1 oh 1.9141
+EVAL s 1 s 3.8815
+EVAL c
+EVAL i 1 s 2.4490
+EVAL sl 1 s -4.9877
+EVAL oh 1 oh 0.0000

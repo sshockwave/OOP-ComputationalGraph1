@@ -1,0 +1,33 @@
+3
+ku C 0.0000
+g C 2.4254
+w P
+13
+ah = ku * ku
+af = COND g ku w
+q = ah - w
+ej = COND af ku w
+af = af - w
+cy = COND ah ah ej
+h = COND ej af g
+ah = COND ej cy cy
+i = COND ah af h
+af = COND i h cy
+e = COND af ej i
+fk = COND cy af i
+oh = ah >= ah
+14
+EVAL cy 1 w -3.8912
+EVAL q 1 w 0.0000
+EVAL w 1 w 0.0000
+EVAL ah 1 w 0.0000
+EVAL oh 1 w 0.5956
+EVAL q 1 w 0.3045
+EVAL q 1 w 0.6564
+EVAL oh 1 w 0.0000
+EVAL fk 1 w 0.0000
+EVAL w 1 w 0.0000
+EVAL cy 1 w -0.9961
+EVAL ej 1 w -2.7432
+EVAL h 1 w 0.0000
+EVAL q 1 w 4.3374

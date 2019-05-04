@@ -1,0 +1,37 @@
+5
+ci C 0.0000
+nc V 1.4217
+br V 4.1308
+en V -4.8671
+s V 0.0000
+15
+w = COND br br ci
+u = SIN ci
+pd = en < en
+au = ci < u
+pd = PRINT pd
+ua = PRINT ci
+r = ua > ci
+z = PRINT ua
+bj = w - z
+z = COND nc br au
+bj = pd / w
+ja = br > pd
+c = PRINT ci
+u = PRINT en
+w = COND s w w
+14
+EVAL c
+EVAL ua
+EVAL ja
+EVAL br
+EVAL bj
+EVAL ci
+EVAL br
+EVAL nc
+EVAL br
+EVAL bj
+EVAL c
+EVAL br
+EVAL au
+EVAL nc

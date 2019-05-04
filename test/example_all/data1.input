@@ -1,0 +1,37 @@
+5
+f P
+ef V 4.3229
+l C -1.1788
+j P
+te C -4.6442
+14
+gu = l <= te
+gu = PRINT te
+qn = f / te
+t = COND ef l f
+ui = PRINT t
+zj = te >= ui
+gh = PRINT j
+t = l == gh
+t = COND gu gu te
+qn = gu < j
+gh = PRINT t
+gh = PRINT j
+ui = PRINT te
+gh = te >= qn
+15
+EVAL ui
+EVAL zj 1 f 0.0000
+SETANSWER ef 1
+SETCONSTANT ef 3.8292
+SETANSWER ef 2
+EVAL ui
+SETCONSTANT ef 0.4704
+SETANSWER ef 1
+EVAL t
+EVAL j 1 j 0.0000
+EVAL gu
+EVAL te
+EVAL ui
+EVAL l
+EVAL f 1 f 0.0000
