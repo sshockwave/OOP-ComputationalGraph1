@@ -2,6 +2,8 @@
 #include "Error.h"
 
 namespace cgraph{
+	std::vector<Node::ptr> Placeholder::NodePlaceholder::getPreq(Symbol) const{return {};}
+	std::vector<Node::ptr> Placeholder::NodePlaceholder::getAllPreq() const{return {};}
 	void Placeholder::NodePlaceholder::set(num_t v,const Symbol& s){
 		if(value!=v){
 			value=v;
@@ -25,6 +27,8 @@ namespace cgraph{
 			NodeConstant(num_t v){
 				value=v;
 			}
+			std::vector<ptr>getPreq(Symbol)const{return {};}
+			std::vector<ptr>getAllPreq()const{return {};}
 			void eval(Symbol) override{}
 	};
 	Constant::Constant(num_t v):ptr(std::make_shared<NodeConstant>(v)){}
@@ -35,6 +39,8 @@ namespace cgraph{
 		return ptr->getValue();
 	}
 
+	std::vector<Node::ptr> Variable::NodeVariable::getPreq(Symbol) const{return {};}
+	std::vector<Node::ptr> Variable::NodeVariable::getAllPreq() const{return {};}
 	void Variable::NodeVariable::set(num_t v){
 		value=v;
 	}

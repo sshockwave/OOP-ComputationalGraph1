@@ -259,7 +259,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -280,7 +280,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -301,7 +301,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -322,7 +322,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -343,7 +343,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		return{ a,b };
 	}
 	void eval(Symbol sym) {
@@ -364,7 +364,7 @@ public:
 	std::vector<ptr> getAllPreq()const {
 		return { a,b,c };
 	}
-	std::vector<ptr>getPreg(Symbol sym)const {
+	std::vector<ptr>getPreq(Symbol sym)const {
 		std::vector<ptr>list;
 		if (a->visited != sym) {
 			list.push_back(a);

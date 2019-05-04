@@ -48,7 +48,7 @@ namespace cgraph{
 			 *
 			 * Get all possible prerequisites for this node.
 			 */
-			virtual std::vector<ptr> getAllPreq() const;
+			virtual std::vector<ptr> getAllPreq() const=0;
 			/**
 			 * Node::getPreq
 			 *
@@ -57,7 +57,7 @@ namespace cgraph{
 			 * Loop to check if all preq. are calculated.
 			 * Potential usage: short-circuiting conditional statements.
 			 */
-			virtual std::vector<ptr> getPreq(Symbol=Symbol()) const;
+			virtual std::vector<ptr> getPreq(Symbol=Symbol()) const=0;
 			/**
 			 * Node::eval
 			 *

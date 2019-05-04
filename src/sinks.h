@@ -7,6 +7,8 @@ namespace cgraph{
 		private:
 			class NodePlaceholder: public Node{
 				public:
+					std::vector<Node::ptr> getPreq(Symbol) const;
+					std::vector<Node::ptr> getAllPreq() const;
 					void set(num_t,const Symbol&);
 					void eval(Symbol) override;
 			};
@@ -31,6 +33,8 @@ namespace cgraph{
 		private:
 			class NodeVariable: public Node{
 				public:
+					std::vector<Node::ptr> getPreq(Symbol) const;
+					std::vector<Node::ptr> getAllPreq() const;
 					void set(num_t);
 					void eval(Symbol) override;
 			};
