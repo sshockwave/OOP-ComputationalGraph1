@@ -1,0 +1,10 @@
+普通的测试方法
+make
+./main
+
+专门的测试代码
+make TAR=test1 #不要.cpp后缀
+./test1
+
+专门的测试代码说明
+test1.cpp: 高效性测试
