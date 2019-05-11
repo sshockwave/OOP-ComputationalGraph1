@@ -1,0 +1,1 @@
+本程序按照c++11的标准进行编写和编译，运用clion、dev、Xcode、visual studio等常规编译器均可编译运行
