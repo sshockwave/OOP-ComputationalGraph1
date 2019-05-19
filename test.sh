@@ -1,12 +1,12 @@
-rm -rf test/**/*.out
+rm -rf test/**/*.tmp
 for file in test/**/*.input
 do
 	echo Running test ${file%.*}
-	if ./main < $file > ${file%.*}.out
+	if ./main < $file > ${file%.*}.tmp
 	then echo \\t successfully.
 	else echo \\t Runtime Error! && return 1
 	fi
-	if python3 checker.py ${file%.*}.out ${file%.*}.output
+	if python3 checker.py ${file%.*}.tmp ${file%.*}.output
 	then echo \\t Check passed.
 	else echo \\t Wrong Answer! && return 1
 	fi

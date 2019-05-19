@@ -1,10 +1,28 @@
-#makefile
+CXX=g++
+CXX_FLAGS=-std=c++14 -g
 
-main: main.cpp Basic_Node.h Operation_Node.h Operation_Node.cpp Constant_Node.h Constant_Node.cpp Data_Node.h Data_Node.cpp Graph.h Graph.cpp  Placeholder_Node.h Placeholder_Node.cpp  Variable_Node.h Variable_Node.cpp
-	g++ main.cpp Operation_Node.cpp  Constant_Node.cpp  Data_Node.cpp Graph.cpp   Placeholder_Node.cpp   Variable_Node.cpp -o main -std=c++14
-	
-clean: 
-	rm *.o main
-	
-debug:
-	g++ -DDEBUG -o main  main.cpp Basic_Node.h Operation_Node.h Operation_Node.cpp Constant_Node.h Constant_Node.cpp Data_Node.h Data_Node.cpp Graph.h Graph.cpp  Placeholder_Node.h Placeholder_Node.cpp  Variable_Node.h Variable_Node.cpp
+.PHONY: all run test clean
+all: main
+run:
+	./main
+test: main test.sh
+	@chmod +x test.sh
+	./test.sh
+clean:
+	rm -rf bin/* dep/* test/**/*.tmp main
+
+src=$(patsubst %.cpp,%,$(wildcard *.cpp))
+
+main: $(patsubst %,bin/%.o,$(src))
+	$(CXX) -o $@ $^ $(CXX_FLAGS)
+
+# Auto-generate dependencies
+.PRECIOUS: dep/%.d
+dep/%.d: %.cpp
+	$(CXX) -o $@ $*.cpp -MM -MP -MT bin/$*.o\ dep/$*.d
+
+# Import dependencies
+-include $(patsubst %,dep/%.d,$(src))
+
+bin/%.o: %.cpp dep/%.d
+	$(CXX) -o $@ $< -c $(CXX_FLAGS)
