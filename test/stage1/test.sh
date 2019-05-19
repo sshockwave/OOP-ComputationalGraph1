@@ -1,5 +1,6 @@
-rm -rf test/**/*.tmp
-for file in test/**/*.input
+cd $(dirname $0)
+rm -rf ./**/*.tmp
+for file in ./**/*.input
 do
 	echo Running test ${file%.*}
 	if ./main < $file > ${file%.*}.tmp
