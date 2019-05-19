@@ -30,14 +30,11 @@
 *.exe
 *.out
 *.app
-
-# Outputs
-bin/
-dep/
-dist/
+main
 
 # Editor Temporary Files
 .*.swp
 
 # Test files
-test/*.out
+test/**/*.tmp
+test/**/*.log
