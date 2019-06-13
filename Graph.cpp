@@ -9,117 +9,60 @@ using std::cout;
 using std::fixed;
 using std::setprecision;
 
-
+void Graph::set_new_item(string name,Basic_Node* x){
+	abandoned.push_back(x);
+	set_new_item(new Placeholder_Node(name, x));
+}
+void Graph::set_new_item(Data_Node* x){
+	string name=x->get_name();
+	auto it=item.find(name);
+	if(it!=item.end()){
+		abandoned.push_back(it->second);
+	}
+	item[name]=x;
+}
 
 void Graph::initialize_operator_1(string name, string a, string Operator)
 {
     if (Operator == "SIN") {
-        Operation_Node* temp1 = new Operation_Sin(item[a]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        item[name] = temp2;
+		set_new_item(name,new Operation_Sin(item[a]));
     }
     else if (Operator == "LOG") {
-        Operation_Node* temp1 = new Operation_Log(item[a]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        item[name] = temp2;
+		set_new_item(name,new Operation_Log(item[a]));
     }
     else if (Operator == "TANH") {
-        Operation_Node* temp1 = new Operation_Tanh(item[a]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        item[name] = temp2;
+		set_new_item(name,new Operation_Tanh(item[a]));
     }
     else if (Operator == "EXP") {
-        Operation_Node* temp1 = new Operation_Exp(item[a]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        item[name] = temp2;
+		set_new_item(name,new Operation_Exp(item[a]));
     }
     else if (Operator == "SIGMOID") {
-        Operation_Node* temp1 = new Operation_Sigmoid(item[a]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        item[name] = temp2;
+		set_new_item(name,new Operation_Sigmoid(item[a]));
     }
     else if (Operator == "PRINT" || Operator == "Print") {
-        Operation_Node* temp1 = new Operation_Print(item[a]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        item[name] = temp2;
+		set_new_item(name,new Operation_Print(item[a]));
     }
 	else if (Operator == "GRAD"){
-		Gradient_Node* x = new Gradient_Node(item[a]);
-		Data_Node* temp2=new Placeholder_Node(name, x);
-		auto it=item.find(name);
-		if(it!=item.end()){
-			abandoned.push_back(it->second);
-		}
-		item[name]=temp2;
+		set_new_item(name,new Gradient_Node(item[a]));
 	}
 }
 
 void Graph::initialize_operator_2(string name, string a, string b, string Operator)
 {
     if (Operator == "+") {
-        Operation_Node* temp1 = new Operation_Plus(item[a], item[b]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        else if (name == b) {
-            abandoned.push_back(item[b]);
-        }
-        item[name] = temp2;
+		set_new_item(name, new Operation_Plus(item[a], item[b]));
     }
     else if (Operator == "-") {
-        Operation_Node* temp1 = new Operation_Minus(item[a], item[b]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        else if (name == b) {
-            abandoned.push_back(item[b]);
-        }
-        item[name] = temp2;
+		set_new_item(name, new Operation_Minus(item[a], item[b]));
     }
     else if (Operator == "*") {
-        Operation_Node* temp1 = new Operation_Multiply(item[a], item[b]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        else if (name == b) {
-            abandoned.push_back(item[b]);
-        }
-        item[name] = temp2;
+		set_new_item(name, new Operation_Multiply(item[a], item[b]));
     }
     else if (Operator == "/") {
-        Operation_Node* temp1 = new Operation_Division(item[a], item[b]);
-        Data_Node* temp2 = new Placeholder_Node(name, temp1);
-        if (name == a) {
-            abandoned.push_back(item[a]);
-        }
-        else if (name == b) {
-            abandoned.push_back(item[b]);
-        }
-        item[name] = temp2;
+		set_new_item(name, new Operation_Division(item[a], item[b]));
     }
 	else if (Operator == "AT") {
-		Placeholder_Node* ph=dynamic_cast<Placeholder_Node*>(item[a]);
+		Data_Node* ph=dynamic_cast<Data_Node*>(item[a]);
 		if(ph==nullptr){
 			cout<<"Error: Node "<<a<<" does not exist or does not match citeria."<<std::endl;
 			return;
@@ -133,43 +76,20 @@ void Graph::initialize_operator_2(string name, string a, string b, string Operat
 			cout<<"Error: "<<a<<" is not a gradient node."<<std::endl;
 			return;
 		}
-		Basic_Node* val=grad->get_grad(item[b]);
-        Data_Node* temp2 = new Placeholder_Node(name, val);
-		auto it=item.find(name);
-		if(it!=item.end()){
-			abandoned.push_back(it->second);
-		}
-		item[name]=temp2;
+		//recycling should be handled by Gradient_Node
+		//therefor set_new_item(name, Basic_Node*) is not appropriate
+		set_new_item(new Placeholder_Node(name, grad->get_grad(item[b])));
 	}
 }
 
 void Graph::initialize_operator_3(string name, string a, string b, string Operator)
 {
-    Operation_Node* temp1 = new Operation_Logic(item[a], item[b], Operator);
-    Data_Node* temp2 = new Placeholder_Node(name, temp1);
-    if (name == a) {
-        abandoned.push_back(item[a]);
-    }
-    else if (name == b) {
-        abandoned.push_back(item[b]);
-    }
-    item[name] = temp2;
+    set_new_item(name, new Operation_Logic(item[a], item[b], Operator));
 }
 
 void Graph::initialize_operator_COND(string name, string a, string b, string c)
 {
-    Operation_COND* temp1 = new Operation_COND(item[a], item[b], item[c]);
-    Data_Node* temp2 = new Placeholder_Node(name, temp1);
-    if (name == a) {
-        abandoned.push_back(item[a]);
-    }
-    else if (name == b) {
-        abandoned.push_back(item[b]);
-    }
-    else if (name == c) {
-        abandoned.push_back(item[c]);
-    }
-    item[name] = temp2;
+    set_new_item(name, new Operation_COND(item[a], item[b], item[c]));
 }
 
 //判断某个节点对应语句运算符的类型。一元/二元/逻辑/COND？ 返回值1/2/3/4

@@ -72,8 +72,12 @@ Basic_Node* Operation_Multiply::EVAL( ){
 
 void Operation_Multiply::propagate_grad(Gradient_Node *target_func){
 	Basic_Node* grad=target_func->get_grad(this);
-	target_func->push_grad(prev_Datas[0],new Operation_Multiply(prev_Datas[1],grad));
-	target_func->push_grad(prev_Datas[1],new Operation_Multiply(prev_Datas[0],grad));
+	Basic_Node* tmp1=new Operation_Multiply(prev_Datas[1],grad);
+	Basic_Node* tmp2=new Operation_Multiply(prev_Datas[0],grad);
+	target_func->node_list.push_back(tmp1);
+	target_func->node_list.push_back(tmp2);
+	target_func->push_grad(prev_Datas[0],tmp1);
+	target_func->push_grad(prev_Datas[1],tmp2);
 }
 
 //除法 

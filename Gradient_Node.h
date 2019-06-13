@@ -8,10 +8,9 @@
 
 class Gradient_Node: public Basic_Node{
 	protected:
-		//See Graph.h, it's almost the same
-		std::vector<Basic_Node*> abandoned;
 		std::map<Basic_Node*,Basic_Node*>item;
 	public:
+		std::vector<Basic_Node*> node_list;//this contains all nodes created
 		Gradient_Node(Basic_Node*);
 		~Gradient_Node();
 		Basic_Node* EVAL();

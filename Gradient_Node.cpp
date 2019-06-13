@@ -54,10 +54,7 @@ void Gradient_Node::clear_buffer(){
 }
 
 Gradient_Node::~Gradient_Node(){
-	for(auto pii:item){
-		delete pii.second;
-	}
-	for(auto ptr:abandoned){
+	for(auto ptr:node_list){
 		delete ptr;
 	}
 }
@@ -66,7 +63,7 @@ Basic_Node* Gradient_Node::get_grad(Basic_Node* var){
 	auto it=item.find(var);
 	if(it==item.end()){
 		auto zero=new Constant_Node(0,"zero");
-		abandoned.push_back(zero);
+		node_list.push_back(zero);
 		return zero;
 	}
 	return it->second;
@@ -79,6 +76,6 @@ void Gradient_Node::push_grad(Basic_Node *target,Basic_Node *grad_val){
 		item[target]=grad_val;
 		return;
 	}
-	abandoned.push_back(it->second);
 	it->second=new Operation_Plus(it->second,grad_val);
+	node_list.push_back(it->second);
 }
