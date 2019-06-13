@@ -6,7 +6,7 @@ lib=$(patsubst %,bin/%.o,$(src))
 tests=$(patsubst test/%/test.sh,test/%/run,$(wildcard test/**/test.sh))
 
 .PHONY: all test clean lib
-all: lib
+all: lib $(patsubst test/%/test.sh,test/%/main,$(wildcard test/**/test.sh))
 lib: $(lib)
 test: $(tests)
 clean:
