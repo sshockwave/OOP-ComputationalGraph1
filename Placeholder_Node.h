@@ -11,8 +11,6 @@ public:
     ~Placeholder_Node() {};
     Basic_Node* EVAL();
     string get_name() { return name; }
-	std::vector<Basic_Node*>get_preq_nodes()override;
-	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 

@@ -6,7 +6,7 @@
 #include <vector>
 #include <map>
 
-class Gradient_Node:Basic_Node{
+class Gradient_Node: public Basic_Node{
 	protected:
 		//See Graph.h, it's almost the same
 		std::vector<Basic_Node*> abandoned;
@@ -19,6 +19,7 @@ class Gradient_Node:Basic_Node{
 		string get_type();
 		void clear_buffer();
 		Basic_Node* get_grad(Basic_Node*);
+		std::vector<Basic_Node*> get_preq_nodes(){return {};};
 		void push_grad(Basic_Node *target,Basic_Node *grad_val);
 };
 

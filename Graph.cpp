@@ -61,6 +61,15 @@ void Graph::initialize_operator_1(string name, string a, string Operator)
         }
         item[name] = temp2;
     }
+	else if (Operator == "GRAD"){
+		Gradient_Node* x = new Gradient_Node(item[a]);
+		Data_Node* temp2=new Placeholder_Node(name, x);
+		auto it=item.find(name);
+		if(it!=item.end()){
+			abandoned.push_back(it->second);
+		}
+		item[name]=temp2;
+	}
 }
 
 void Graph::initialize_operator_2(string name, string a, string b, string Operator)
@@ -109,6 +118,29 @@ void Graph::initialize_operator_2(string name, string a, string b, string Operat
         }
         item[name] = temp2;
     }
+	else if (Operator == "AT") {
+		Placeholder_Node* ph=dynamic_cast<Placeholder_Node*>(item[a]);
+		if(ph==nullptr){
+			cout<<"Error: Node "<<a<<" does not exist or does not match citeria."<<std::endl;
+			return;
+		}
+		auto vec=ph->get_preq_nodes();
+		if(vec.empty()){
+			cout<<"Error: Node "<<a<<" does not exist or does not match citeria."<<std::endl;
+		}
+		Gradient_Node* grad=dynamic_cast<Gradient_Node*>(vec[0]);
+		if(grad==nullptr){
+			cout<<"Error: "<<a<<" is not a gradient node."<<std::endl;
+			return;
+		}
+		Basic_Node* val=grad->get_grad(item[b]);
+        Data_Node* temp2 = new Placeholder_Node(name, val);
+		auto it=item.find(name);
+		if(it!=item.end()){
+			abandoned.push_back(it->second);
+		}
+		item[name]=temp2;
+	}
 }
 
 void Graph::initialize_operator_3(string name, string a, string b, string Operator)
@@ -149,11 +181,11 @@ void Graph::crossroad(string s)
     int i = 0, location = 0, operation_type = 0;
     while (ss >> temp) {
         expressions.push_back(temp);
-        if (temp == "SIN" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print") {
+        if (temp == "SIN" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print" || temp == "GRAD") {
             location = i;
             operation_type = 1;
         }
-        else if (temp == "+" || temp == "-" || temp == "*" || temp == "/") {
+        else if (temp == "+" || temp == "-" || temp == "*" || temp == "/" || temp == "AT") {
             location = i;
             operation_type = 2;
         }

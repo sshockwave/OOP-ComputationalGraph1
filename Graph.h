@@ -13,6 +13,7 @@
 #include"Operation_Node.h"
 #include"Placeholder_Node.h"
 #include"Variable_Node.h"
+#include"Gradient_Node.h"
 using std::string;
 using std::map;
 

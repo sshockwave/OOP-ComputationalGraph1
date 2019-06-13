@@ -73,6 +73,7 @@ Basic_Node* Gradient_Node::get_grad(Basic_Node* var){
 }
 
 void Gradient_Node::push_grad(Basic_Node *target,Basic_Node *grad_val){
+	if(target==nullptr)return;
 	auto it=item.find(target);
 	if(it==item.end()){
 		item[target]=grad_val;

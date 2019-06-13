@@ -1,5 +1,4 @@
 #include "Placeholder_Node.h"
-#include "Gradient_Node.h"
 Basic_Node* Placeholder_Node::EVAL( ){
 	if (assigned) {
 		return this;
@@ -14,17 +13,6 @@ Basic_Node* Placeholder_Node::EVAL( ){
 		value = tmp->get_value();
 		assigned = true;
 		return this;
-	}
-}
-
-std::vector<Basic_Node*>Placeholder_Node::get_preq_nodes(){
-	if(prev_Operation==nullptr)return {};
-	return {prev_Operation};
-}
-
-void Placeholder_Node::propagate_grad(Gradient_Node* target_func){
-	if(prev_Operation!=nullptr){
-		target_func->push_grad(prev_Operation,target_func->get_grad(this));
 	}
 }
 
