@@ -23,6 +23,9 @@ public:
     string get_type() { return ""; }
     string get_name() { return ""; }
 	void clear_buffer();
+	std::vector<Basic_Node*> get_preq_nodes() override{
+		return prev_Datas;
+	}
     
     
     //DEBUG:
@@ -42,6 +45,7 @@ public:
     ~Operation_Plus(){};
     Operation_Plus(Basic_Node* b, Basic_Node* c) :Operation_Node(b, c) {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 
@@ -65,6 +69,7 @@ public:
     Operation_Multiply(Basic_Node* b, Basic_Node* c) :Operation_Node(b, c) {};
     ~Operation_Multiply() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 

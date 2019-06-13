@@ -2,11 +2,6 @@
 
 //数据基类的实现
 
-Data_Node::~Data_Node()
-{
-    delete prev_Operation;
-}
-
 string Data_Node::get_name()
 {
     return name;

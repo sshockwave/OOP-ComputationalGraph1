@@ -7,6 +7,7 @@
 #include<utility>
 #include<map>
 #include<iostream>
+#include<vector>
 using std::map;
 using std::string;
 
@@ -24,6 +25,10 @@ public:
 	virtual void clear_buffer() = 0;
     float get_value(){return value;};
 	void set_value(float a) { value = a;assigned = true; };
+	virtual std::vector<Basic_Node*> get_preq_nodes() = 0;
+	virtual void propagate_grad(class Gradient_Node *target_func){
+		std::cout<<"Error: Node of "<<get_type()<<" does not implement gradient calculation"<<std::endl;
+	}
 
 };
 

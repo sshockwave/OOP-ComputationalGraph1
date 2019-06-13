@@ -4,6 +4,7 @@
 #include <vector>
 #include "Basic_Node.h"
 #include "Operation_Node.h"
+#include "Gradient_Node.h"
 
 using std::vector;
 using std::string;
@@ -16,11 +17,19 @@ protected:
     Basic_Node* prev_Operation;
 public:
     Data_Node(){};
-    ~Data_Node();
     string get_name();
     virtual string get_type();
     virtual Basic_Node* EVAL() = 0;
 	virtual void clear_buffer();
+	std::vector<Basic_Node*>get_preq_nodes(){
+		if(prev_Operation==nullptr)return {};
+		return {prev_Operation};
+	}
+	void propagate_grad(Gradient_Node* target_func)override{
+		if(prev_Operation!=nullptr){
+			target_func->push_grad(prev_Operation,target_func->get_grad(this));
+		}
+	}
  };
 
 
