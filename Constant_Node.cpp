@@ -4,6 +4,7 @@ Constant_Node::Constant_Node(float x, string y) {
     value = x;
     name = y;
     type = "Constant";
+	prev_Operation = nullptr;
 };
 
 Basic_Node* Constant_Node::EVAL() {

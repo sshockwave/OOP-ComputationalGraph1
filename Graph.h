@@ -20,15 +20,14 @@ using std::map;
 class Graph  //完成对整张计算图的操作
 {
     vector<Basic_Node*> abandoned;  //重名结点中的老结点
-    map<string, Data_Node*> item; //所有数据结点
     map<int, float> answers; //第几次执行的结果
-private:
+public:
+    map<string, Data_Node*> item; //所有数据结点
+    Graph(){};
+    ~Graph();
 	//set_new_item handles the recycle of the node
 	void set_new_item(string name,Basic_Node*);
 	void set_new_item(Data_Node*);
-public:
-    Graph(){};
-    ~Graph();
     void creat_nodes_1();
     void creat_nodes_2();
     void commands();
