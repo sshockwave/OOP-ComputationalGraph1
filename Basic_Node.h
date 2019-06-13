@@ -7,6 +7,7 @@
 #include<utility>
 #include<map>
 #include<iostream>
+#include<vector>
 using std::map;
 using std::string;
 
@@ -24,6 +25,7 @@ public:
 	virtual void clear_buffer() = 0;
     float get_value(){return value;};
 	void set_value(float a) { value = a;assigned = true; };
+	virtual std::vector<Basic_Node*> get_preq_nodes() = 0;
 
 };
 

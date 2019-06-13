@@ -21,6 +21,7 @@ public:
     virtual string get_type();
     virtual Basic_Node* EVAL() = 0;
 	virtual void clear_buffer();
+	std::vector<Basic_Node*>get_preq_nodes(){return {};}
  };
 
 

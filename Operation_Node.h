@@ -23,6 +23,9 @@ public:
     string get_type() { return ""; }
     string get_name() { return ""; }
 	void clear_buffer();
+	std::vector<Basic_Node*> get_preq_nodes() override{
+		return prev_Datas;
+	}
     
     
     //DEBUG:

@@ -16,6 +16,11 @@ Basic_Node* Placeholder_Node::EVAL( ){
 	}
 }
 
+std::vector<Basic_Node*>Placeholder_Node::get_preq_nodes(){
+	if(prev_Operation==nullptr)return {};
+	return {prev_Operation};
+}
+
 
 Placeholder_Node::Placeholder_Node(string x){
 	assigned = false;
