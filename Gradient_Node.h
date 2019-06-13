@@ -8,8 +8,9 @@
 
 class Gradient_Node:Basic_Node{
 	protected:
+		//See Graph.h, it's almost the same
 		std::vector<Basic_Node*> abandoned;
-		std::map<Basic_Node*,Basic_Node*>grad;
+		std::map<Basic_Node*,Basic_Node*>item;
 	public:
 		~Gradient_Node();
 		Basic_Node* EVAL();
@@ -18,4 +19,4 @@ class Gradient_Node:Basic_Node{
 		void clear_buffer();
 };
 
-#endif //INC_7_Graph_H
+#endif //GRAD_NODE_H

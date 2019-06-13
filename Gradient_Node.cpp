@@ -15,13 +15,13 @@ string Gradient_Node::get_type(){
 }
 
 void Gradient_Node::clear_buffer(){
-	for(auto it:grad){
+	for(auto it:item){
 		it.second->clear_buffer();
 	}
 }
 
 Gradient_Node::~Gradient_Node(){
-	for(auto it:grad){
+	for(auto it:item){
 		delete it.second;
 	}
 	for(auto it:abandoned){
