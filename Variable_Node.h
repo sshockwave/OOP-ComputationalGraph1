@@ -3,7 +3,7 @@
 #define INC_7_VARIABLE_NODE_H
 #include"Data_Node.h"
 
-class Variable_Node :public Data_Node
+class Variable_Node : public Data_Node
 {
 public:
     Variable_Node() {};
