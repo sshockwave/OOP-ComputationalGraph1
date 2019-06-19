@@ -20,7 +20,7 @@ main3: test/newton/main
 	cp $< $@
 test/%/main: test/%/main.cpp
 test/%/run: test/stage1/test.sh test/%/main
-	@chmod +x test/%/test.sh
+	@chmod +x test/$*/test.sh
 	test/$*/test.sh
 test/%/main: test/%/main.cpp $(lib)
 	$(CXX) -o $@ $^ $(CXX_FLAGS) -I.
