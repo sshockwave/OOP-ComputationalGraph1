@@ -105,6 +105,21 @@ Basic_Node* Operation_Division::EVAL( ){
     value = ans;
     return this;
 }
+void Operation_Division::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	Basic_Node* v=new Operation_Division(grad,prev_Datas[1]);
+	target_func->add_node(v);
+	target_func->push_grad(prev_Datas[0],v);//dA/B
+	v=new Operation_Division(v,prev_Datas[1]);
+	target_func->add_node(v);
+	v=new Operation_Multiply(v,prev_Datas[0]);
+	target_func->add_node(v);
+	Basic_Node* m1=new Constant_Node(-1,"minus one");
+	target_func->add_node(m1);
+	v=new Operation_Multiply(v,m1);
+	target_func->add_node(v);
+	target_func->push_grad(prev_Datas[1],v);//-A/B^2*dB
+}
 
 //正弦 
 Basic_Node* Operation_Sin::EVAL( ){
