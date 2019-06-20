@@ -1,9 +1,11 @@
 #include "Gradient_Node.h"
 #include "Constant_Node.h"
+#include "Graph.h"
 #include <iostream>
 #include <queue>
 
-Gradient_Node::Gradient_Node(Basic_Node* target_func){
+Gradient_Node::Gradient_Node(Basic_Node* target_func,Graph* g){
+	graph=g;
 	std::map<Basic_Node*,size_t>in_degree;
 	std::queue<Basic_Node*>q;
 	q.push(target_func);
@@ -53,17 +55,11 @@ void Gradient_Node::clear_buffer(){
 	}
 }
 
-Gradient_Node::~Gradient_Node(){
-	for(auto ptr:node_list){
-		delete ptr;
-	}
-}
-
 Basic_Node* Gradient_Node::get_grad(Basic_Node* var){
 	auto it=item.find(var);
 	if(it==item.end()){
 		auto zero=new Constant_Node(0,"zero");
-		node_list.push_back(zero);
+		add_node(zero);
 		return zero;
 	}
 	return it->second;
@@ -77,5 +73,9 @@ void Gradient_Node::push_grad(Basic_Node *target,Basic_Node *grad_val){
 		return;
 	}
 	it->second=new Operation_Plus(it->second,grad_val);
-	node_list.push_back(it->second);
+	add_node(it->second);
+}
+
+void Gradient_Node::add_node(Basic_Node *x){
+	graph->abandoned.push_back(x);
 }

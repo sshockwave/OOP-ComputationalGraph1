@@ -43,7 +43,7 @@ void Graph::initialize_operator_1(string name, string a, string Operator)
 		set_new_item(name,new Operation_Print(item[a]));
     }
 	else if (Operator == "GRAD"){
-		set_new_item(name,new Gradient_Node(item[a]));
+		set_new_item(name,new Gradient_Node(item[a],this));
 	}
 }
 
