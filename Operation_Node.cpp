@@ -22,6 +22,7 @@ Operation_Node::Operation_Node(Basic_Node* b)
 
 void Operation_Node::clear_buffer()
 {
+	reset_state();
 	for (int i = 0;i < prev_Datas.size();i++) {
 		prev_Datas[i]->clear_buffer();
 	}

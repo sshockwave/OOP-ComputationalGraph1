@@ -10,6 +10,7 @@ public:
     Constant_Node(float x,string y);
     ~Constant_Node() {};
     Basic_Node* EVAL();
+	void reset_state(){}
     
 };
 

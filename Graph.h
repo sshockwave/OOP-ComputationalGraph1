@@ -42,6 +42,7 @@ public:
     void initialize_operator_COND(string name, string a, string b, string c);
     void crossroad(string s);
     int string_to_int(string s);
+	void reset_state();
 
     friend class Variable_Node;
 };

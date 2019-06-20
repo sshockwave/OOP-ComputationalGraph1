@@ -35,7 +35,7 @@ void solve_func(){
 				}
 			}
 		}
-		g.item["x_next"]->clear_buffer();
+		g.reset_state();
 		if(i>0){
 			cout<<" ";
 		}

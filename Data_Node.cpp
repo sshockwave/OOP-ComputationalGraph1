@@ -14,10 +14,7 @@ string Data_Node::get_type()
 
 void Data_Node::clear_buffer()
 {
-	if (type == "Placeholder") {
-		value = 0;
-		assigned = false;
-	}
+	reset_state();
 	if(prev_Operation!=nullptr)
 		prev_Operation->clear_buffer();
 }

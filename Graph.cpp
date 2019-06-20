@@ -220,7 +220,7 @@ void Graph::commands()
                 answers[i] = ans->get_value();
                 cout << fixed << setprecision(4) << answers[i] << std::endl;
             }	
-			item[target]->clear_buffer();
+			reset_state();
         }
         else if (s == "SETCONSTANT") {
             string target;
@@ -250,4 +250,13 @@ Graph::~Graph()
     for (int i = 0;i < abandoned.size();i++) {
     	 delete abandoned[i];
     }
+}
+
+void Graph::reset_state(){
+	for(auto it:item){
+		it.second->reset_state();
+	}
+	for(auto it:abandoned){
+		it->reset_state();
+	}
 }
