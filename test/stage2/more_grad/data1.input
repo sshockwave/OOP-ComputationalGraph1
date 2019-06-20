@@ -1,0 +1,9 @@
+2
+x P
+y P
+3
+z = x - y
+g = GRAD z
+gx = g AT x
+1
+EVAL gx
