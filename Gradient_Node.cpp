@@ -77,5 +77,5 @@ void Gradient_Node::push_grad(Basic_Node *target,Basic_Node *grad_val){
 }
 
 void Gradient_Node::add_node(Basic_Node *x){
-	graph->abandoned.push_back(x);
+	graph->add_node(x);
 }

@@ -10,7 +10,7 @@ using std::fixed;
 using std::setprecision;
 
 void Graph::set_new_item(string name,Basic_Node* x){
-	abandoned.push_back(x);
+	add_node(x);
 	set_new_item(new Placeholder_Node(name, x));
 }
 void Graph::set_new_item(Data_Node* x){
@@ -20,6 +20,9 @@ void Graph::set_new_item(Data_Node* x){
 		abandoned.push_back(it->second);
 	}
 	item[name]=x;
+}
+void Graph::add_node(Basic_Node* x){
+	abandoned.push_back(x);
 }
 
 void Graph::initialize_operator_1(string name, string a, string Operator)
