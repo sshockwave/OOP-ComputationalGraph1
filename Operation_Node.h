@@ -57,6 +57,7 @@ public:
     Operation_Minus(Basic_Node* b, Basic_Node* c) :Operation_Node(b, c) {};
     ~Operation_Minus() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 

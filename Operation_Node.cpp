@@ -1,5 +1,6 @@
 #include "Operation_Node.h"
 #include "Gradient_Node.h"
+#include "Constant_Node.h"
 //运算符基类的函数实现 
 Operation_Node::Operation_Node(Basic_Node* b, Basic_Node* c, Basic_Node* d)
 {
@@ -39,7 +40,6 @@ Basic_Node* Operation_Plus::EVAL( ){
     value = ans;
     return this;
 }
-
 void Operation_Plus::propagate_grad(Gradient_Node *target_func){
 	Basic_Node* grad=target_func->get_grad(this);
 	target_func->push_grad(prev_Datas[0],grad);
@@ -56,6 +56,16 @@ Basic_Node* Operation_Minus::EVAL( ){
     value = ans;
     return this;
 }
+void Operation_Minus::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	target_func->push_grad(prev_Datas[0],grad);
+	Basic_Node* m1=new Constant_Node(-1,"-1");
+	Basic_Node* mult=new Operation_Multiply(m1,grad);
+	target_func->add_node(m1);
+	target_func->add_node(mult);
+	target_func->push_grad(prev_Datas[1],mult);
+}
+
 //乘法
 Basic_Node* Operation_Multiply::EVAL( ){
     Basic_Node* temp1 = prev_Datas[0]->EVAL();
