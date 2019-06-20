@@ -25,11 +25,14 @@ public:
     map<string, Data_Node*> item; //所有数据结点
     Graph(){};
     ~Graph();
-	//set_new_item handles the recycle of the node
-	void set_new_item(string name,Basic_Node*);
-	void set_new_item(Data_Node*);
 	//add this node to memory management list
 	void add_node(Basic_Node*);
+	void add_node(Basic_Node *x,string name);
+	//set the mapping only, don't add to memory management
+	void set_node(Basic_Node *x,string name);
+	//set this item with the name in the data_node
+	void set_new_item(Data_Node*);
+
     void creat_nodes_1();
     void creat_nodes_2();
     void commands();
