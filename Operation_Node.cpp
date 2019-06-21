@@ -205,9 +205,9 @@ void Operation_Tanh::propagate_grad(Gradient_Node *target_func){
 	Basic_Node* grad=target_func->get_grad(this);
 	Basic_Node* v=new Operation_Multiply(this,this);
 	target_func->add_node(v);
-	v=new Operation_Multiply(grad,this);
+	v=new Operation_Multiply(grad,v);
 	target_func->add_node(v);
-	v=new Operation_Minus(grad,this);
+	v=new Operation_Minus(grad,v);
 	target_func->add_node(v);
 	target_func->push_grad(prev_Datas[0],v);
 }

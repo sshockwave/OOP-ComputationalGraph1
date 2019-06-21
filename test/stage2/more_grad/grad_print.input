@@ -1,0 +1,10 @@
+2
+x P
+y P
+4
+z = PRINT x
+z = z * y
+z = GRAD z
+z = z AT x
+1
+EVAL z 2 x 2.3 y 0.44
