@@ -10,7 +10,7 @@ void solve_func(){
 		float a;
 		cin>>a;
 		if(i==n){
-			g.set_new_item("f",new Constant_Node(a,"a"));
+			g.add_node(new Constant_Node(a,"a"),"f");
 		}else{
 			g.initialize_operator_2("f","f","x","*");
 			g.set_new_item(new Constant_Node(a,"a"));
@@ -35,7 +35,7 @@ void solve_func(){
 				}
 			}
 		}
-		g.item["x_next"]->clear_buffer();
+		g.reset_state();
 		if(i>0){
 			cout<<" ";
 		}

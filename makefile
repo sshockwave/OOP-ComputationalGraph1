@@ -6,16 +6,22 @@ lib=$(patsubst %,bin/%.o,$(src))
 tests=$(patsubst test/%/test.sh,test/%/run,$(wildcard test/**/test.sh))
 
 .PHONY: all test clean lib
-all: lib $(patsubst test/%/test.sh,test/%/main,$(wildcard test/**/test.sh))
+all: lib main1 main2 main3 $(patsubst test/%/test.sh,test/%/main,$(wildcard test/**/test.sh))
 lib: $(lib)
 test: $(tests)
 clean:
-	rm -rf bin/* dep/* test/**/*.tmp test/**/main test/**/*.log
+	rm -rf bin/* dep/* test/**/*.tmp test/**/main test/**/*.log test/**/**/*.tmp main*
 
+main1: test/stage1/main
+	cp $< $@
+main2: test/stage2/main
+	cp $< $@
+main3: test/newton/main
+	cp $< $@
 test/%/main: test/%/main.cpp
 test/%/run: test/stage1/test.sh test/%/main
-	#@chmod +x test/%/test.sh
-	test/$*/test.sh | tee test/$*/test.log
+	@chmod +x test/$*/test.sh
+	test/$*/test.sh
 test/%/main: test/%/main.cpp $(lib)
 	$(CXX) -o $@ $^ $(CXX_FLAGS) -I.
 

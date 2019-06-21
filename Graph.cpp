@@ -9,10 +9,6 @@ using std::cout;
 using std::fixed;
 using std::setprecision;
 
-void Graph::set_new_item(string name,Basic_Node* x){
-	abandoned.push_back(x);
-	set_new_item(new Placeholder_Node(name, x));
-}
 void Graph::set_new_item(Data_Node* x){
 	string name=x->get_name();
 	auto it=item.find(name);
@@ -21,45 +17,58 @@ void Graph::set_new_item(Data_Node* x){
 	}
 	item[name]=x;
 }
+void Graph::add_node(Basic_Node* x){
+	abandoned.push_back(x);
+}
+void Graph::add_node(Basic_Node* x,string name){
+	add_node(x);
+	set_node(x,name);
+}
+void Graph::set_node(Basic_Node* x,string name){
+	set_new_item(new Placeholder_Node(name, x));
+}
 
 void Graph::initialize_operator_1(string name, string a, string Operator)
 {
     if (Operator == "SIN") {
-		set_new_item(name,new Operation_Sin(item[a]));
+		add_node(new Operation_Sin(item[a]),name);
+    }
+	else if (Operator == "COS") {
+		add_node(new Operation_Cos(item[a]),name);
     }
     else if (Operator == "LOG") {
-		set_new_item(name,new Operation_Log(item[a]));
+		add_node(new Operation_Log(item[a]),name);
     }
     else if (Operator == "TANH") {
-		set_new_item(name,new Operation_Tanh(item[a]));
+		add_node(new Operation_Tanh(item[a]),name);
     }
     else if (Operator == "EXP") {
-		set_new_item(name,new Operation_Exp(item[a]));
+		add_node(new Operation_Exp(item[a]),name);
     }
     else if (Operator == "SIGMOID") {
-		set_new_item(name,new Operation_Sigmoid(item[a]));
+		add_node(new Operation_Sigmoid(item[a]),name);
     }
     else if (Operator == "PRINT" || Operator == "Print") {
-		set_new_item(name,new Operation_Print(item[a]));
+		add_node(new Operation_Print(item[a]),name);
     }
 	else if (Operator == "GRAD"){
-		set_new_item(name,new Gradient_Node(item[a]));
+		add_node(new Gradient_Node(item[a],this),name);
 	}
 }
 
 void Graph::initialize_operator_2(string name, string a, string b, string Operator)
 {
     if (Operator == "+") {
-		set_new_item(name, new Operation_Plus(item[a], item[b]));
+		add_node(new Operation_Plus(item[a], item[b]),name);
     }
     else if (Operator == "-") {
-		set_new_item(name, new Operation_Minus(item[a], item[b]));
+		add_node(new Operation_Minus(item[a], item[b]),name);
     }
     else if (Operator == "*") {
-		set_new_item(name, new Operation_Multiply(item[a], item[b]));
+		add_node(new Operation_Multiply(item[a], item[b]),name);
     }
     else if (Operator == "/") {
-		set_new_item(name, new Operation_Division(item[a], item[b]));
+		add_node(new Operation_Division(item[a], item[b]),name);
     }
 	else if (Operator == "AT") {
 		Data_Node* ph=dynamic_cast<Data_Node*>(item[a]);
@@ -77,19 +86,18 @@ void Graph::initialize_operator_2(string name, string a, string b, string Operat
 			return;
 		}
 		//recycling should be handled by Gradient_Node
-		//therefor set_new_item(name, Basic_Node*) is not appropriate
-		set_new_item(new Placeholder_Node(name, grad->get_grad(item[b])));
+		set_node(grad->get_grad(item[b]),name);
 	}
 }
 
 void Graph::initialize_operator_3(string name, string a, string b, string Operator)
 {
-    set_new_item(name, new Operation_Logic(item[a], item[b], Operator));
+    add_node(new Operation_Logic(item[a], item[b], Operator),name);
 }
 
 void Graph::initialize_operator_COND(string name, string a, string b, string c)
 {
-    set_new_item(name, new Operation_COND(item[a], item[b], item[c]));
+    add_node(new Operation_COND(item[a], item[b], item[c]),name);
 }
 
 //判断某个节点对应语句运算符的类型。一元/二元/逻辑/COND？ 返回值1/2/3/4
@@ -101,7 +109,7 @@ void Graph::crossroad(string s)
     int i = 0, location = 0, operation_type = 0;
     while (ss >> temp) {
         expressions.push_back(temp);
-        if (temp == "SIN" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print" || temp == "GRAD") {
+        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print" || temp == "GRAD") {
             location = i;
             operation_type = 1;
         }
@@ -215,7 +223,7 @@ void Graph::commands()
                 answers[i] = ans->get_value();
                 cout << fixed << setprecision(4) << answers[i] << std::endl;
             }	
-			item[target]->clear_buffer();
+			reset_state();
         }
         else if (s == "SETCONSTANT") {
             string target;
@@ -245,4 +253,13 @@ Graph::~Graph()
     for (int i = 0;i < abandoned.size();i++) {
     	 delete abandoned[i];
     }
+}
+
+void Graph::reset_state(){
+	for(auto it:item){
+		it.second->reset_state();
+	}
+	for(auto it:abandoned){
+		it->reset_state();
+	}
 }
