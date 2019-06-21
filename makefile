@@ -10,7 +10,7 @@ all: lib main1 main2 main3 $(patsubst test/%/test.sh,test/%/main,$(wildcard test
 lib: $(lib)
 test: $(tests)
 clean:
-	rm -rf bin/* dep/* test/**/*.tmp test/**/main test/**/*.log
+	rm -rf bin/* dep/* test/**/*.tmp test/**/main test/**/*.log test/**/**/*.tmp main*
 
 main1: test/stage1/main
 	cp $< $@
