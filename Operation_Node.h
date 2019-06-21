@@ -100,7 +100,15 @@ public:
     Basic_Node* EVAL();
 };
 
-
+//余弦运算符子类
+class Operation_Cos :public Operation_Node
+{
+public:
+    Operation_Cos() {};
+    Operation_Cos(Basic_Node* b) :Operation_Node(b) {};
+    ~Operation_Cos() {};
+    Basic_Node* EVAL();
+};
 
 //对数运算符子类
 class Operation_Log :public Operation_Node

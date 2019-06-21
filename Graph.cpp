@@ -33,6 +33,9 @@ void Graph::initialize_operator_1(string name, string a, string Operator)
     if (Operator == "SIN") {
 		add_node(new Operation_Sin(item[a]),name);
     }
+	else if (Operator == "COS") {
+		add_node(new Operation_Cos(item[a]),name);
+    }
     else if (Operator == "LOG") {
 		add_node(new Operation_Log(item[a]),name);
     }
@@ -106,7 +109,7 @@ void Graph::crossroad(string s)
     int i = 0, location = 0, operation_type = 0;
     while (ss >> temp) {
         expressions.push_back(temp);
-        if (temp == "SIN" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print" || temp == "GRAD") {
+        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print" || temp == "GRAD") {
             location = i;
             operation_type = 1;
         }

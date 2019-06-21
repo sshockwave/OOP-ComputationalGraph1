@@ -130,6 +130,15 @@ Basic_Node* Operation_Sin::EVAL( ){
     return this;
 }
 
+//余弦
+Basic_Node* Operation_Cos::EVAL( ){
+    Basic_Node* temp1 = prev_Datas[0]->EVAL();
+    if(temp1 == nullptr) return nullptr;
+    float ans = cos(temp1->get_value() );
+    value = ans;
+    return this;
+}
+
 //对数 
 Basic_Node* Operation_Log::EVAL( ){
     Basic_Node* temp1 = prev_Datas[0]->EVAL();
