@@ -1,0 +1,9 @@
+1
+x P
+1
+y = COS x
+4
+EVAL y 1 x 0
+EVAL y 1 x 3.14
+EVAL y 0
+EVAL y 1 x 10

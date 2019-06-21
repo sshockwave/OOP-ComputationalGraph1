@@ -22,6 +22,7 @@ public:
     virtual Basic_Node* EVAL() = 0;
     virtual string get_name()= 0;
     virtual string get_type() = 0;
+	virtual void reset_state(){value=0;assigned=false;}
 	virtual void clear_buffer() = 0;
     float get_value(){return value;};
 	void set_value(float a) { value = a;assigned = true; };

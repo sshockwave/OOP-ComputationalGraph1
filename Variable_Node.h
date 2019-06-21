@@ -10,6 +10,7 @@ public:
     Variable_Node(float x, string y);
     ~Variable_Node() {};
     Basic_Node* EVAL();
+	void reset_state(){}
 };
 
 #endif //INC_7_VARIABLE_NODE_H
