@@ -120,6 +120,7 @@ public:
     Operation_Log(Basic_Node* b) :Operation_Node(b) {};
     ~Operation_Log() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 
@@ -132,6 +133,7 @@ public:
     Operation_Exp(Basic_Node* b) :Operation_Node(b) {};
     ~Operation_Exp() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 
@@ -144,6 +146,7 @@ public:
     Operation_Tanh(Basic_Node* b) :Operation_Node(b) {};
     ~Operation_Tanh() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 
@@ -155,6 +158,7 @@ public:
     Operation_Sigmoid(Basic_Node* b) :Operation_Node(b) {};
     ~Operation_Sigmoid() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 
@@ -167,6 +171,7 @@ public:
     Operation_Print(Basic_Node* b) :Operation_Node(b) {};
     ~Operation_Print() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 
@@ -179,6 +184,7 @@ public:
     Operation_Logic(Basic_Node* b, Basic_Node* c, string s) :Operation_Node(b, c), type(s) {};
     ~Operation_Logic() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override{}
 };
 
 class Operation_COND :public Operation_Node
@@ -188,6 +194,7 @@ public:
     Operation_COND(Basic_Node* b, Basic_Node* c, Basic_Node* d) :Operation_Node(b, c, d) {};
     ~Operation_COND() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 

@@ -171,6 +171,12 @@ Basic_Node* Operation_Log::EVAL( ){
     value = ans;
     return this;
 }
+void Operation_Log::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	Basic_Node* v=new Operation_Division(grad,prev_Datas[0]);
+	target_func->add_node(v);
+	target_func->push_grad(prev_Datas[0],v);
+}
 
 //指数 
 Basic_Node* Operation_Exp::EVAL( ){
@@ -179,6 +185,12 @@ Basic_Node* Operation_Exp::EVAL( ){
     float ans = exp(temp1->get_value() );
     value = ans;
     return this;
+}
+void Operation_Exp::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	Basic_Node* v=new Operation_Multiply(grad,this);
+	target_func->add_node(v);
+	target_func->push_grad(prev_Datas[0],v);
 }
 
 //双曲正切
@@ -189,6 +201,16 @@ Basic_Node* Operation_Tanh::EVAL( ){
     value = (temp*temp - 1) / (temp*temp + 1);
     return this;
 }
+void Operation_Tanh::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	Basic_Node* v=new Operation_Multiply(this,this);
+	target_func->add_node(v);
+	v=new Operation_Multiply(grad,this);
+	target_func->add_node(v);
+	v=new Operation_Minus(grad,this);
+	target_func->add_node(v);
+	target_func->push_grad(prev_Datas[0],v);
+}
 
 //Sigmoid
 Basic_Node* Operation_Sigmoid::EVAL( ){
@@ -198,6 +220,16 @@ Basic_Node* Operation_Sigmoid::EVAL( ){
     value = temp / (temp + 1);
     return this;
 }
+void Operation_Sigmoid::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	Basic_Node* v=new Operation_Multiply(this,this);
+	target_func->add_node(v);
+	v=new Operation_Minus(this,v);
+	target_func->add_node(v);
+	v=new Operation_Multiply(grad,v);
+	target_func->add_node(v);
+	target_func->push_grad(prev_Datas[0],v);
+}
 
 //Print运算符子类
 Basic_Node* Operation_Print::EVAL( ){
@@ -206,6 +238,10 @@ Basic_Node* Operation_Print::EVAL( ){
     std::cout << fixed << setprecision(4) << "PRINT operator: " << prev_Datas[0]->get_name() << " = " << temp1->get_value() << std::endl;
     value = temp1->get_value();
     return this;
+}
+void Operation_Print::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	target_func->push_grad(prev_Datas[0],grad);
 }
 
 //逻辑运算符
@@ -253,4 +289,20 @@ Basic_Node* Operation_COND::EVAL(){
     else
         value =  d_value;
     return this;
+}
+
+void Operation_COND::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	Basic_Node* zero=new Constant_Node(0,"zero");
+	target_func->add_node(zero);
+	{
+		Basic_Node* val1=new Operation_COND(prev_Datas[0],grad,zero);
+		target_func->add_node(val1);
+		target_func->push_grad(prev_Datas[1],val1);
+	}
+	{
+		Basic_Node* val2=new Operation_COND(prev_Datas[0],zero,grad);
+		target_func->add_node(val2);
+		target_func->push_grad(prev_Datas[2],val2);
+	}
 }
