@@ -129,6 +129,14 @@ Basic_Node* Operation_Sin::EVAL( ){
     value = ans;
     return this;
 }
+void Operation_Sin::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	Basic_Node* v=new Operation_Cos(prev_Datas[0]);
+	target_func->add_node(v);
+	v=new Operation_Multiply(v,grad);
+	target_func->add_node(v);
+	target_func->push_grad(prev_Datas[0],v);
+}
 
 //余弦
 Basic_Node* Operation_Cos::EVAL( ){
@@ -137,6 +145,18 @@ Basic_Node* Operation_Cos::EVAL( ){
     float ans = cos(temp1->get_value() );
     value = ans;
     return this;
+}
+void Operation_Cos::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	Basic_Node* v=new Operation_Sin(prev_Datas[0]);
+	target_func->add_node(v);
+	v=new Operation_Multiply(v,grad);
+	target_func->add_node(v);
+	Basic_Node* m1=new Constant_Node(-1,"minus one");
+	target_func->add_node(m1);
+	v=new Operation_Multiply(v,m1);
+	target_func->add_node(v);
+	target_func->push_grad(prev_Datas[0],v);
 }
 
 //对数 

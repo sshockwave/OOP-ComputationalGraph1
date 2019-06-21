@@ -98,6 +98,7 @@ public:
     Operation_Sin(Basic_Node* b) :Operation_Node(b) {};
     ~Operation_Sin() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 //余弦运算符子类
@@ -108,6 +109,7 @@ public:
     Operation_Cos(Basic_Node* b) :Operation_Node(b) {};
     ~Operation_Cos() {};
     Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 //对数运算符子类

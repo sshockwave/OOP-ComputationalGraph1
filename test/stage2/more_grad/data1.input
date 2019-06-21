@@ -1,7 +1,7 @@
 2
 x P
 y P
-8
+14
 z = x - y
 g = GRAD z
 gx = g AT x
@@ -10,8 +10,17 @@ div = x / y
 divg = GRAD div
 divx = divg AT x
 divy = divg AT y
-4
-EVAL gx
-EVAL gy
+sinx = SIN x
+dsinx = GRAD sinx
+dsinx = dsinx AT x
+cosx = COS dsinx
+cosx = GRAD cosx
+cosx = cosx AT x
+7
+EVAL gx 0
+EVAL gy 0
 EVAL divx 2 x -1 y 100
 EVAL divy 2 x 3 y 10
+EVAL dsinx 0
+EVAL dsinx 1 x 3.2
+EVAL cosx 1 x 3.2
