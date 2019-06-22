@@ -51,6 +51,9 @@ void Graph::initialize_operator_1(string name, string a, string Operator)
     else if (Operator == "PRINT" || Operator == "Print") {
 		add_node(new Operation_Print(item[a]),name);
     }
+    else if(Operator == "ASSERT"){
+		add_node(new Opration_Assert(item[a]),name);
+	}
 	else if (Operator == "GRAD"){
 		add_node(new Gradient_Node(item[a],this),name);
 	}
@@ -70,6 +73,12 @@ void Graph::initialize_operator_2(string name, string a, string b, string Operat
     else if (Operator == "/") {
 		add_node(new Operation_Division(item[a], item[b]),name);
     }
+    else if(Operator == "BIND"){
+		add_node(new Opration_Bind(item[a],item[b]),name);
+	}
+	else if(Operation == "ASSIGN"){
+		add_node(new Opration_Assign(item[a],item[b]),name);
+	}
 	else if (Operator == "AT") {
 		Data_Node* ph=dynamic_cast<Data_Node*>(item[a]);
 		if(ph==nullptr){
@@ -109,11 +118,11 @@ void Graph::crossroad(string s)
     int i = 0, location = 0, operation_type = 0;
     while (ss >> temp) {
         expressions.push_back(temp);
-        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print" || temp == "GRAD") {
+        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print"||temp=="Assert" ||temp=="Bind"|| temp == "GRAD") {
             location = i;
             operation_type = 1;
         }
-        else if (temp == "+" || temp == "-" || temp == "*" || temp == "/" || temp == "AT") {
+        else if (temp == "+" || temp == "-" || temp == "*" || temp == "/" || temp == "AT" || temp == "BIND" || temp == "ASSIGN") {
             location = i;
             operation_type = 2;
         }

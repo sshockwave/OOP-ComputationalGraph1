@@ -121,6 +121,21 @@ void Operation_Division::propagate_grad(Gradient_Node *target_func){
 	target_func->push_grad(prev_Datas[1],v);//-A/B^2*dB
 }
 
+//Bind运算符子类
+Basic_Node* Operation_Bind::EVAL( ){
+	 Basic_Node* temp1 = prev_Datas[0]->EVAL();
+    if(temp1 == nullptr)
+    	return nullptr;
+    Basic_Node* temp2 = prev_Datas[1]->EVAL();
+    if(temp2 == nullptr) 
+    	return nullptr;
+	
+    float ans = temp1->get_value();
+    value = asn;
+    return this;
+}
+
+
 //正弦 
 Basic_Node* Operation_Sin::EVAL( ){
     Basic_Node* temp1 = prev_Datas[0]->EVAL();
@@ -229,6 +244,18 @@ void Operation_Sigmoid::propagate_grad(Gradient_Node *target_func){
 	v=new Operation_Multiply(grad,v);
 	target_func->add_node(v);
 	target_func->push_grad(prev_Datas[0],v);
+}
+
+//Assert运算符子类
+Basic_Node* Operation_Assert::EVAL(){
+	Basic_Node* temp1 = pre_Datas[0]->EAVL();
+	if(temp1==nullptr)return nullptr;
+	else if(temp1->get_value() <= 0){
+       std::cout<<"ERROR: Assertion failed"<<std::endl;
+        return nullptr;
+    }
+    value = 0;
+    return this;
 }
 
 //Print运算符子类

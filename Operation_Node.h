@@ -86,6 +86,24 @@ public:
 	void propagate_grad(Gradient_Node *target_func)override;
 };
 
+//Bind类运算子类
+class Operation_Bind:public Operation_Node{
+	Operation_Bind(){};
+	Operation_Bind(Basic_Node* b,Basic_Node* c) :Operation_Node(b, c) {};
+	~Operation_Bind();
+	Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
+}
+
+//Assign类运算子类
+class Operation_Assign:public Operation_Node{
+public:
+	Operation_Assign(){};
+	Operation_Assign(Basic_Node* b,Basic_Node* c);Operator_Node(b, c) {};
+	~Operation_Assign(){};
+	Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
+}
 
 
 //一元运算符
@@ -174,6 +192,15 @@ public:
 	void propagate_grad(Gradient_Node *target_func)override;
 };
 
+//Assert运算符子类
+class Operation_Assert:public Operation_Node{
+public:
+	Operation_Assert(){};
+	Operation_Assert(Basic_Node* b):Operation_Node(b){};
+	~Operation_Assert(){};
+	Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
+}
 
 //逻辑运算符子类
 class Operation_Logic:public Operation_Node
