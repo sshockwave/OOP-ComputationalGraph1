@@ -2,13 +2,16 @@
 
 项目地址：https://github.com/sshockwave/OOP-ComputationalGraph1
 
+_该项目在第一阶段结束后开源_
+
 测试状态：[![CircleCI](https://circleci.com/gh/sshockwave/OOP-ComputationalGraph1/tree/master.svg?style=svg)](https://circleci.com/gh/sshockwave/OOP-ComputationalGraph1/tree/master)
 
 ## 文档
 
-对第一阶段互评提出的异议见[doc/第一阶段互评/objections.md](doc/第一阶段互评/objections.md)。
-
-第二阶段实现文档见[doc/第二阶段扩展说明.md](doc/第二阶段扩展说明.md)。
+* 本组第一阶段代码：[release 1.0.0](https://github.com/sshockwave/OOP-ComputationalGraph1/tree/1.0.0)
+* 代码结构：[doc/第二阶段代码结构.md](doc/第二阶段代码结构.md)。
+* 第二阶段实验报告：[doc/第二阶段扩展说明.md](doc/第二阶段扩展说明.md)。
+* 对第一阶段互评提出的异议：[doc/第一阶段互评/objections.md](doc/第一阶段互评/objections.md)。
 
 ## 编译代码
 
