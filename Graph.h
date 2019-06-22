@@ -14,6 +14,7 @@
 #include"Placeholder_Node.h"
 #include"Variable_Node.h"
 #include"Gradient_Node.h"
+#include"Session.h"
 using std::string;
 using std::map;
 
@@ -43,6 +44,8 @@ public:
     void crossroad(string s);
     int string_to_int(string s);
 	void reset_state();
+	void save(Session& sess);
+	void restore(Session& sess);
 
     friend class Variable_Node;
 };

@@ -263,3 +263,21 @@ void Graph::reset_state(){
 		it->reset_state();
 	}
 }
+
+void Graph::save(Session& sess){
+	for(const auto &it:item){
+		auto ptr=dynamic_cast<Variable_Node*>(it.second);
+		if(ptr==nullptr)continue;
+		sess.set(it.first,ptr->get_value());
+	}
+}
+
+void Graph::restore(Session& sess){
+	for(const auto &pii:sess.values){
+		auto it=item.find(pii.first);
+		if(it==item.end())continue;
+		auto ptr=dynamic_cast<Variable_Node*>(it->second);
+		if(ptr==nullptr)continue;
+		ptr->set_value(pii.second);
+	}
+}
