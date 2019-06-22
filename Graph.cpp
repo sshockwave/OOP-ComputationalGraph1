@@ -52,7 +52,7 @@ void Graph::initialize_operator_1(string name, string a, string Operator)
 		add_node(new Operation_Print(item[a]),name);
     }
     else if(Operator == "ASSERT"){
-		add_node(new Opration_Assert(item[a]),name);
+		add_node(new Operation_Assert(item[a]),name);
 	}
 	else if (Operator == "GRAD"){
 		add_node(new Gradient_Node(item[a],this),name);
@@ -74,10 +74,10 @@ void Graph::initialize_operator_2(string name, string a, string b, string Operat
 		add_node(new Operation_Division(item[a], item[b]),name);
     }
     else if(Operator == "BIND"){
-		add_node(new Opration_Bind(item[a],item[b]),name);
+		add_node(new Operation_Bind(item[a],item[b]),name);
 	}
-	else if(Operation == "ASSIGN"){
-		add_node(new Opration_Assign(item[a],item[b]),name);
+	else if(Operator == "ASSIGN"){
+		add_node(new Operation_Assign(item[a],item[b],set_variable),name);
 	}
 	else if (Operator == "AT") {
 		Data_Node* ph=dynamic_cast<Data_Node*>(item[a]);
@@ -227,15 +227,17 @@ void Graph::commands()
 					item[s]->set_value(value);
                 }
             }
-            for(auto iter = gragh.ste_variable.begin();iter = gragh.set_variable.end();iter++ ){
-				iter->first->set_value(iter->second);
-			}
-			set_variable.clear();
             Basic_Node*  ans =  item[target]->EVAL();
             if(ans != nullptr) {
                 answers[i] = ans->get_value();
                 cout << fixed << setprecision(4) << answers[i] << std::endl;
             }	
+			for(auto it:set_variable){
+				if(it.first!=nullptr){
+					it.first->set_value(it.second);
+				}
+			}
+			set_variable.clear();
 			reset_state();
         }
         else if (s == "SETCONSTANT") {

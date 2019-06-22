@@ -133,18 +133,23 @@ Basic_Node* Operation_Bind::EVAL( ){
     value = ans;
     return this;
 }
+void Operation_Bind::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	target_func->push_grad(prev_Datas[0],grad);
+}
 
 //Assign运算符子类
 Basic_Node* Operation_Assign::EVAL(){
-	Basic_Node* temp1 = prev_Datas[0]->EVAL();
-	if(temp1==nullptr)return nullptr;
 	Basic_Node* temp2 = prev_Datas[1]->EVAL();
     if(temp2 == nullptr) return nullptr;
 	float ans = temp2->get_value();
-	set_variable[temp1]=ans;
-	temp1->set_value(ans);
+	set_variable[prev_Datas[0]]=ans;
 	value = ans;
     return this;
+}
+void Operation_Assign::propagate_grad(Gradient_Node *target_func){
+	Basic_Node* grad=target_func->get_grad(this);
+	target_func->push_grad(prev_Datas[1],grad);
 }
 
 //正弦 

@@ -5,7 +5,6 @@
 #include <cmath>
 #include<iomanip>
 #include "Basic_Node.h"
-#include "Graph.h"
 using std::vector;
 using std::fixed;
 using std::setprecision;
@@ -89,19 +88,20 @@ public:
 
 //Bind类运算子类
 class Operation_Bind:public Operation_Node{
-	Operation_Bind(){};
+public:
 	Operation_Bind(Basic_Node* b,Basic_Node* c) :Operation_Node(b, c) {};
-	~Operation_Bind();
+	~Operation_Bind(){}
 	Basic_Node* EVAL();
 	void propagate_grad(Gradient_Node *target_func)override;
 };
 
 //Assign类运算子类
 class Operation_Assign:public Operation_Node{
+	protected:
+		map<Basic_Node*,float>&set_variable;
 public:
-	Operation_Assign(){};
-	Operation_Assign(Basic_Node* b,Basic_Node* c):Operation_Node(b, c) {};
-	~Operation_Assign(){};
+	Operation_Assign(Basic_Node* b,Basic_Node* c,map<Basic_Node*,float>mp):Operation_Node(b, c),set_variable(mp) {};
+	~Operation_Assign(){}
 	Basic_Node* EVAL();
 	void propagate_grad(Gradient_Node *target_func)override;
 };
@@ -200,7 +200,7 @@ public:
 	Operation_Assert(Basic_Node* b):Operation_Node(b){};
 	~Operation_Assert(){};
 	Basic_Node* EVAL();
-	void propagate_grad(Gradient_Node *target_func)override;
+	void propagate_grad(Gradient_Node *target_func)override{}
 };
 
 //逻辑运算符子类
