@@ -2,13 +2,17 @@
 
 项目地址：https://github.com/sshockwave/OOP-ComputationalGraph1
 
+_该项目在第一阶段结束后开源_
+
 测试状态：[![CircleCI](https://circleci.com/gh/sshockwave/OOP-ComputationalGraph1/tree/master.svg?style=svg)](https://circleci.com/gh/sshockwave/OOP-ComputationalGraph1/tree/master)
 
 ## 文档
 
-对第一阶段互评提出的异议见[doc/第一阶段互评/objections.md](doc/第一阶段互评/objections.md)。
-
-第二阶段实现文档见[doc/第二阶段扩展说明.md](doc/第二阶段扩展说明.md)。
+* 本组第一阶段代码：[Release 1.0.0](https://github.com/sshockwave/OOP-ComputationalGraph1/releases/tag/1.0.0)
+* 第二阶段起始代码：[Release 2.0.0-alpha](https://github.com/sshockwave/OOP-ComputationalGraph1/releases/tag/2.0.0-alpha)
+* 图库结构：[doc/图库结构.md](doc/图库结构.md)。
+* 第二阶段实验报告：[doc/第二阶段扩展说明.md](doc/第二阶段扩展说明.md)。
+* 对第一阶段互评提出的异议：[doc/第一阶段互评/objections.md](doc/第一阶段互评/objections.md)。
 
 ## 编译代码
 
@@ -31,31 +35,35 @@ make
 
 基础部分的三个程序`main1`、`main2`、`main3`在项目根目录下生成。其他程序见对应`test`目录。
 
+以Linux为例：
 ```bash
-# 运行第一阶段程序
+# 运行第一阶段主程序
 ./main1
-# 运行第二阶段程序
+# 运行第二阶段主程序
 ./main2
 # 运行牛顿迭代法
 ./main3
+# 运行梯度下降法
+test/gradient_descent/main
 ```
 
 ## 测试程序
 
-自动化测试需要在linux环境下进行。
+自动化测试需要在linux环境下进行。需要`python3`来运行测试的checker，需要python中的`numpy`库来校验梯度下降法的答案。
 
-运行
+测试所有程序：
 ```bash
 make test
 ```
-即可对所有数据进行测试。
 
 如需单独测试：
 ```bash
-# 测试第一阶段程序
+# 测试第一阶段主程序
 make test/stage1/run
-# 测试第二阶段程序
+# 测试第二阶段主程序
 make test/stage2/run
 # 测试牛顿迭代法
 make test/newton/run
+# 测试梯度下降法
+make test/gradient_descent/run
 ```
