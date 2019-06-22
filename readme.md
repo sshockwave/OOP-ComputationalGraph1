@@ -10,7 +10,7 @@ _该项目在第一阶段结束后开源_
 
 * 本组第一阶段代码：[Release 1.0.0](https://github.com/sshockwave/OOP-ComputationalGraph1/releases/tag/1.0.0)
 * 第二阶段起始代码：[Release 2.0.0-alpha](https://github.com/sshockwave/OOP-ComputationalGraph1/releases/tag/2.0.0-alpha)
-* 代码结构：[doc/第二阶段代码结构.md](doc/第二阶段代码结构.md)。
+* 图库结构：[doc/图库结构.md](doc/图库结构.md)。
 * 第二阶段实验报告：[doc/第二阶段扩展说明.md](doc/第二阶段扩展说明.md)。
 * 对第一阶段互评提出的异议：[doc/第一阶段互评/objections.md](doc/第一阶段互评/objections.md)。
 
