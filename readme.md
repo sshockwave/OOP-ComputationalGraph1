@@ -34,13 +34,16 @@ make
 
 基础部分的三个程序`main1`、`main2`、`main3`在项目根目录下生成。其他程序见对应`test`目录。
 
+以Linux为例：
 ```bash
-# 运行第一阶段程序
+# 运行第一阶段主程序
 ./main1
-# 运行第二阶段程序
+# 运行第二阶段主程序
 ./main2
 # 运行牛顿迭代法
 ./main3
+# 运行梯度下降法
+test/gradient_descent/main
 ```
 
 ## 测试程序
@@ -55,10 +58,12 @@ make test
 
 如需单独测试：
 ```bash
-# 测试第一阶段程序
+# 测试第一阶段主程序
 make test/stage1/run
-# 测试第二阶段程序
+# 测试第二阶段主程序
 make test/stage2/run
 # 测试牛顿迭代法
 make test/newton/run
+# 测试梯度下降法
+make test/gradient_descent/run
 ```
