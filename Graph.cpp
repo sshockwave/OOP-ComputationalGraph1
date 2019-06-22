@@ -118,7 +118,7 @@ void Graph::crossroad(string s)
     int i = 0, location = 0, operation_type = 0;
     while (ss >> temp) {
         expressions.push_back(temp);
-        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print"||temp=="Assert" ||temp=="Bind"|| temp == "GRAD") {
+        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print"||temp=="Assert" ||temp == "GRAD") {
             location = i;
             operation_type = 1;
         }
@@ -227,6 +227,10 @@ void Graph::commands()
 					item[s]->set_value(value);
                 }
             }
+            for(auto iter = gragh.ste_variable.begin();iter = gragh.set_variable.end();iter++ ){
+				iter->first->set_value(iter->second);
+			}
+			set_variable.clear();
             Basic_Node*  ans =  item[target]->EVAL();
             if(ans != nullptr) {
                 answers[i] = ans->get_value();

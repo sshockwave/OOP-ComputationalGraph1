@@ -22,6 +22,7 @@ class Graph  //完成对整张计算图的操作
     vector<Basic_Node*> abandoned;  //重名结点中的老结点
     map<int, float> answers; //第几次执行的结果
 public:
+	map<Variable_Node*,float>set_variable;
     map<string, Data_Node*> item; //所有数据结点
     Graph(){};
     ~Graph();

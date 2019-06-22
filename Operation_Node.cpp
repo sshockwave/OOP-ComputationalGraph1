@@ -130,10 +130,22 @@ Basic_Node* Operation_Bind::EVAL( ){
     if(temp2 == nullptr) 
     	return nullptr;	
     float ans = temp1->get_value();
-    value = asn;
+    value = ans;
     return this;
 }
 
+//Assign运算符子类
+Basic_Node* Operation_Assign::EVAL(){
+	Basic_Node* temp1 = prev_Datas[0]->EVAL();
+	if(temp1==nullptr)return nullptr;
+	Basic_Node* temp2 = prev_Datas[1]->EVAL();
+    if(temp2 == nullptr) return nullptr;
+	float ans = temp2->get_value();
+	set_variable[temp1]=ans;
+	temp1->set_value(ans);
+	value = ans;
+    return this;
+}
 
 //正弦 
 Basic_Node* Operation_Sin::EVAL( ){
@@ -247,7 +259,7 @@ void Operation_Sigmoid::propagate_grad(Gradient_Node *target_func){
 
 //Assert运算符子类
 Basic_Node* Operation_Assert::EVAL(){
-	Basic_Node* temp1 = pre_Datas[0]->EAVL();
+	Basic_Node* temp1 = prev_Datas[0]->EVAL();
 	if(temp1==nullptr)return nullptr;
 	else if(temp1->get_value() <= 0){
        std::cout<<"ERROR: Assertion failed"<<std::endl;
