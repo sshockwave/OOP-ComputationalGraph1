@@ -1,5 +1,6 @@
 #include"Graph.h"
 #include<iomanip>
+#include<fstream>
 using std::stringstream;
 using std::string;
 using std::map;
@@ -239,6 +240,22 @@ void Graph::commands()
             ss >> num;
             item[target]->set_value(answers[num-1]);
         }
+		else if (s == "SAVEFILE") {
+			string filename;
+			ss>>filename;
+			std::ofstream fout(filename);
+			Session sess;
+			save(sess);
+			fout<<sess;
+		}
+		else if (s == "READFILE") {
+			string filename;
+			ss>>filename;
+			std::ifstream fin(filename);
+			Session sess;
+			fin>>sess;
+			restore(sess);
+		}
 
     }
 }
@@ -261,5 +278,23 @@ void Graph::reset_state(){
 	}
 	for(auto it:abandoned){
 		it->reset_state();
+	}
+}
+
+void Graph::save(Session& sess){
+	for(const auto &it:item){
+		auto ptr=dynamic_cast<Variable_Node*>(it.second);
+		if(ptr==nullptr)continue;
+		sess.set(it.first,ptr->get_value());
+	}
+}
+
+void Graph::restore(Session& sess){
+	for(const auto &pii:sess.values){
+		auto it=item.find(pii.first);
+		if(it==item.end())continue;
+		auto ptr=dynamic_cast<Variable_Node*>(it->second);
+		if(ptr==nullptr)continue;
+		ptr->set_value(pii.second);
 	}
 }
