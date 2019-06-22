@@ -243,7 +243,7 @@ void Graph::commands()
 		else if (s == "SAVEFILE") {
 			string filename;
 			ss>>filename;
-			std::fstream fout(filename);
+			std::ofstream fout(filename);
 			Session sess;
 			save(sess);
 			fout<<sess;
@@ -251,7 +251,7 @@ void Graph::commands()
 		else if (s == "READFILE") {
 			string filename;
 			ss>>filename;
-			std::fstream fin(filename);
+			std::ifstream fin(filename);
 			Session sess;
 			fin>>sess;
 			restore(sess);

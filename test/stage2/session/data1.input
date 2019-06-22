@@ -1,0 +1,13 @@
+2
+x P
+y V 2.2
+1
+z = x * y
+7
+EVAL z 1 x 3.5
+SAVEFILE ./a.tmp
+SETCONSTANT y 0.78
+EVAL z 1 x 2
+READFILE ./a.tmp
+EVAL z 0
+EVAL z 1 x 5.1
