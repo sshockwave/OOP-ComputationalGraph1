@@ -49,13 +49,12 @@ test/gradient_descent/main
 
 ## 测试程序
 
-自动化测试需要在linux环境下进行。
+自动化测试需要在linux环境下进行。需要`python3`来运行测试的checker，需要python中的`numpy`库来校验梯度下降法的答案。
 
-运行
+测试所有程序：
 ```bash
 make test
 ```
-即可对所有数据进行测试。
 
 如需单独测试：
 ```bash
