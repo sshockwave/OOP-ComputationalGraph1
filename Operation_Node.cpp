@@ -128,8 +128,7 @@ Basic_Node* Operation_Bind::EVAL( ){
     	return nullptr;
     Basic_Node* temp2 = prev_Datas[1]->EVAL();
     if(temp2 == nullptr) 
-    	return nullptr;
-	
+    	return nullptr;	
     float ans = temp1->get_value();
     value = asn;
     return this;
