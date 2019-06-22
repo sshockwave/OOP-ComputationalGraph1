@@ -1,5 +1,6 @@
 #include"Graph.h"
 #include<iomanip>
+#include<fstream>
 using std::stringstream;
 using std::string;
 using std::map;
@@ -239,6 +240,22 @@ void Graph::commands()
             ss >> num;
             item[target]->set_value(answers[num-1]);
         }
+		else if (s == "SAVEFILE") {
+			string filename;
+			ss>>filename;
+			std::fstream fout(filename);
+			Session sess;
+			save(sess);
+			fout<<sess;
+		}
+		else if (s == "READFILE") {
+			string filename;
+			ss>>filename;
+			std::fstream fin(filename);
+			Session sess;
+			fin>>sess;
+			restore(sess);
+		}
 
     }
 }
