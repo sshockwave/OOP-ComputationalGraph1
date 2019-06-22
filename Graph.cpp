@@ -73,12 +73,6 @@ void Graph::initialize_operator_2(string name, string a, string b, string Operat
     else if (Operator == "/") {
 		add_node(new Operation_Division(item[a], item[b]),name);
     }
-    else if(Operator == "BIND"){
-		add_node(new Operation_Bind(item[a],item[b]),name);
-	}
-	else if(Operator == "ASSIGN"){
-		add_node(new Operation_Assign(item[a],item[b],set_variable),name);
-	}
 	else if (Operator == "AT") {
 		Data_Node* ph=dynamic_cast<Data_Node*>(item[a]);
 		if(ph==nullptr){
@@ -96,6 +90,16 @@ void Graph::initialize_operator_2(string name, string a, string b, string Operat
 		}
 		//recycling should be handled by Gradient_Node
 		set_node(grad->get_grad(item[b]),name);
+	}
+}
+
+void Graph::initialize_operator_2_left(string name, string a, string b, string Operator)
+{
+    if(Operator == "BIND"){
+		add_node(new Operation_Bind(item[a],item[b]),name);
+	}
+	else if(Operator == "ASSIGN"){
+		add_node(new Operation_Assign(item[a],item[b],set_variable),name);
 	}
 }
 
@@ -118,11 +122,11 @@ void Graph::crossroad(string s)
     int i = 0, location = 0, operation_type = 0;
     while (ss >> temp) {
         expressions.push_back(temp);
-        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print"||temp=="Assert" ||temp == "GRAD") {
+        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print"||temp=="ASSERT" ||temp == "GRAD") {
             location = i;
             operation_type = 1;
         }
-        else if (temp == "+" || temp == "-" || temp == "*" || temp == "/" || temp == "AT" || temp == "BIND" || temp == "ASSIGN") {
+        else if (temp == "+" || temp == "-" || temp == "*" || temp == "/" || temp == "AT") {
             location = i;
             operation_type = 2;
         }
@@ -134,6 +138,10 @@ void Graph::crossroad(string s)
             location = i;
             operation_type = 4;
         }
+		else if (temp == "BIND" || temp == "ASSIGN") {
+			location = i;
+			operation_type = 5;
+		}
         i++;
     }
     switch (operation_type) {
@@ -148,6 +156,9 @@ void Graph::crossroad(string s)
             break;
         case 4://初始化COND
             initialize_operator_COND(expressions[0], expressions[location + 1], expressions[location + 2], expressions[location + 3]);
+            break;
+		case 5://初始化前序二元运算符
+			initialize_operator_2_left(expressions[0], expressions[location + 1], expressions[location + 2], expressions[location]);
             break;
     }
 }

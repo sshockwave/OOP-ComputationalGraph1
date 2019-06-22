@@ -39,6 +39,7 @@ public:
     void commands();
     void initialize_operator_1(string name, string a, string Operator);
     void initialize_operator_2(string name, string a, string b, string Operator);
+    void initialize_operator_2_left(string name, string a, string b, string Operator);
     void initialize_operator_3(string name, string a, string b, string Operator);
     void initialize_operator_COND(string name, string a, string b, string c);
     void crossroad(string s);
