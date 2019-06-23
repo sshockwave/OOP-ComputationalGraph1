@@ -1,0 +1,16 @@
+2
+x P
+y P
+8
+z = x * y
+w = BIND x z
+w = GRAD w
+w = w AT z
+w2 = BIND z y
+w2 = GRAD w2
+w3 = w2 AT x
+w2 = w2 AT z
+3
+EVAL w 2 x 1.5 y 4
+EVAL w2 2 x 1.5 y 4
+EVAL w3 2 x 1.5 y 4

@@ -1,0 +1,13 @@
+2
+x P
+y P
+4
+z = x <= y
+az = ASSERT z
+g = GRAD az
+gz = g AT z
+4
+EVAL az 2 x 1 y 2
+EVAL az 2 x 2 y 1
+EVAL gz 2 x 1 y 2
+EVAL gz 2 x 2 y 1
