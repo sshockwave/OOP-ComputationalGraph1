@@ -1,0 +1,15 @@
+1
+x V 1.0
+4
+y = EXP x
+z = ASSIGN x y
+g = GRAD z
+gx = g AT x
+7
+EVAL gx
+EVAL z 0
+EVAL gx
+EVAL gx
+EVAL z 0
+EVAL gx
+EVAL z 0

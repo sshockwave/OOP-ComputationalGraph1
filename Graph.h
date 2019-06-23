@@ -23,6 +23,7 @@ class Graph  //完成对整张计算图的操作
     vector<Basic_Node*> abandoned;  //重名结点中的老结点
     map<int, float> answers; //第几次执行的结果
 public:
+	map<Basic_Node*,float>set_variable;//记录被重新赋值的Variable类的对象以及所赋的值
     map<string, Data_Node*> item; //所有数据结点
     Graph(){};
     ~Graph();
@@ -39,13 +40,14 @@ public:
     void commands();
     void initialize_operator_1(string name, string a, string Operator);
     void initialize_operator_2(string name, string a, string b, string Operator);
+    void initialize_operator_2_left(string name, string a, string b, string Operator);
     void initialize_operator_3(string name, string a, string b, string Operator);
-    void initialize_operator_COND(string name, string a, string b, string c);
-    void crossroad(string s);
+    void initialize_operator_COND(string name, string a, string b, string c);//创建节点
+    void crossroad(string s);//识别不同种类的运算符，并传参给创建节点的函数
     int string_to_int(string s);
-	void reset_state();
-	void save(Session& sess);
-	void restore(Session& sess);
+	void reset_state();//清空整张图
+	void save(Session& sess);//将数据储存到session
+	void restore(Session& sess);//从session中恢复数据
 
     friend class Variable_Node;
 };

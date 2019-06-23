@@ -13,5 +13,4 @@ public:
     string get_name() { return name; }
 };
 
-
 #endif //INC_7_PLACEHOLDER_NODE_H

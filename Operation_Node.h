@@ -17,15 +17,15 @@ public:
     Operation_Node() {};
     Operation_Node(Basic_Node* b);
     Operation_Node(Basic_Node* b, Basic_Node* c);
-    Operation_Node(Basic_Node* b, Basic_Node* c, Basic_Node* d);
+    Operation_Node(Basic_Node* b, Basic_Node* c, Basic_Node* d);//三种不同的构造函数
     ~Operation_Node() {};
     virtual Basic_Node* EVAL() = 0;   //计算
-    string get_type() { return ""; }
-    string get_name() { return ""; }
+    string get_type() { return ""; }  //获取变量类型
+    string get_name() { return ""; }  //获取变量名
 	void clear_buffer();
 	std::vector<Basic_Node*> get_preq_nodes() override{
 		return prev_Datas;
-	}
+	}//获取前驱节点
     
     
     //DEBUG:
@@ -86,6 +86,25 @@ public:
 	void propagate_grad(Gradient_Node *target_func)override;
 };
 
+//Bind类运算子类
+class Operation_Bind:public Operation_Node{
+public:
+	Operation_Bind(Basic_Node* b,Basic_Node* c) :Operation_Node(b, c) {};
+	~Operation_Bind(){}
+	Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
+};
+
+//Assign类运算子类
+class Operation_Assign:public Operation_Node{
+	protected:
+		map<Basic_Node*,float>&set_variable;
+public:
+	Operation_Assign(Basic_Node* b,Basic_Node* c,map<Basic_Node*,float>&mp):Operation_Node(b, c),set_variable(mp) {};
+	~Operation_Assign(){}
+	Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override;
+};
 
 
 //一元运算符
@@ -174,6 +193,15 @@ public:
 	void propagate_grad(Gradient_Node *target_func)override;
 };
 
+//Assert运算符子类
+class Operation_Assert:public Operation_Node{
+public:
+	Operation_Assert(){};
+	Operation_Assert(Basic_Node* b):Operation_Node(b){};
+	~Operation_Assert(){};
+	Basic_Node* EVAL();
+	void propagate_grad(Gradient_Node *target_func)override{}
+};
 
 //逻辑运算符子类
 class Operation_Logic:public Operation_Node
@@ -187,6 +215,7 @@ public:
 	void propagate_grad(Gradient_Node *target_func)override{}
 };
 
+//Cond运算符子类
 class Operation_COND :public Operation_Node
 {
 public:

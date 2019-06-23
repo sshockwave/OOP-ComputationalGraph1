@@ -1,6 +1,6 @@
 #include "Data_Node.h"
 
-//数据基类的实现
+//数据+基类的实现
 
 string Data_Node::get_name()
 {
@@ -17,4 +17,4 @@ void Data_Node::clear_buffer()
 	reset_state();
 	if(prev_Operation!=nullptr)
 		prev_Operation->clear_buffer();
-}
+}//递归清空缓存

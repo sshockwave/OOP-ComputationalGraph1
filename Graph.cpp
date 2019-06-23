@@ -17,10 +17,10 @@ void Graph::set_new_item(Data_Node* x){
 		abandoned.push_back(it->second);
 	}
 	item[name]=x;
-}
+}//向item中添加节点
 void Graph::add_node(Basic_Node* x){
 	abandoned.push_back(x);
-}
+}//向abandoned中添加需要回收的节点
 void Graph::add_node(Basic_Node* x,string name){
 	add_node(x);
 	set_node(x,name);
@@ -29,6 +29,7 @@ void Graph::set_node(Basic_Node* x,string name){
 	set_new_item(new Placeholder_Node(name, x));
 }
 
+//创建节点
 void Graph::initialize_operator_1(string name, string a, string Operator)
 {
     if (Operator == "SIN") {
@@ -52,6 +53,9 @@ void Graph::initialize_operator_1(string name, string a, string Operator)
     else if (Operator == "PRINT" || Operator == "Print") {
 		add_node(new Operation_Print(item[a]),name);
     }
+    else if(Operator == "ASSERT"){
+		add_node(new Operation_Assert(item[a]),name);
+	}
 	else if (Operator == "GRAD"){
 		add_node(new Gradient_Node(item[a],this),name);
 	}
@@ -91,6 +95,16 @@ void Graph::initialize_operator_2(string name, string a, string b, string Operat
 	}
 }
 
+void Graph::initialize_operator_2_left(string name, string a, string b, string Operator)
+{
+    if(Operator == "BIND"){
+		add_node(new Operation_Bind(item[a],item[b]),name);
+	}
+	else if(Operator == "ASSIGN"){
+		add_node(new Operation_Assign(item[a],item[b],set_variable),name);
+	}
+}
+
 void Graph::initialize_operator_3(string name, string a, string b, string Operator)
 {
     add_node(new Operation_Logic(item[a], item[b], Operator),name);
@@ -110,7 +124,7 @@ void Graph::crossroad(string s)
     int i = 0, location = 0, operation_type = 0;
     while (ss >> temp) {
         expressions.push_back(temp);
-        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print" || temp == "GRAD") {
+        if (temp == "SIN" || temp == "COS" || temp == "LOG" || temp == "TANH" || temp == "EXP" || temp == "SIGMOID" || temp == "PRINT" || temp == "Print"||temp=="ASSERT" ||temp == "GRAD") {
             location = i;
             operation_type = 1;
         }
@@ -126,6 +140,10 @@ void Graph::crossroad(string s)
             location = i;
             operation_type = 4;
         }
+		else if (temp == "BIND" || temp == "ASSIGN") {
+			location = i;
+			operation_type = 5;
+		}
         i++;
     }
     switch (operation_type) {
@@ -140,6 +158,9 @@ void Graph::crossroad(string s)
             break;
         case 4://初始化COND
             initialize_operator_COND(expressions[0], expressions[location + 1], expressions[location + 2], expressions[location + 3]);
+            break;
+		case 5://初始化前序二元运算符
+			initialize_operator_2_left(expressions[0], expressions[location + 1], expressions[location + 2], expressions[location]);
             break;
     }
 }
@@ -224,6 +245,12 @@ void Graph::commands()
                 answers[i] = ans->get_value();
                 cout << fixed << setprecision(4) << answers[i] << std::endl;
             }	
+			for(auto it:set_variable){
+				if(it.first!=nullptr){
+					it.first->set_value(it.second);
+				}
+			}//更新被重新赋值的Variable类对象的value
+			set_variable.clear();
 			reset_state();
         }
         else if (s == "SETCONSTANT") {
@@ -247,7 +274,7 @@ void Graph::commands()
 			Session sess;
 			save(sess);
 			fout<<sess;
-		}
+		}//将当前的variable存入文件中
 		else if (s == "READFILE") {
 			string filename;
 			ss>>filename;
@@ -255,11 +282,12 @@ void Graph::commands()
 			Session sess;
 			fin>>sess;
 			restore(sess);
-		}
+		}//将当前的variable读取到文件中
 
     }
 }
 
+//析构函数
 Graph::~Graph()
 {
     map<string, Data_Node*>::iterator iter = item.begin();
@@ -272,6 +300,7 @@ Graph::~Graph()
     }
 }
 
+//清空整张图
 void Graph::reset_state(){
 	for(auto it:item){
 		it.second->reset_state();
@@ -281,6 +310,7 @@ void Graph::reset_state(){
 	}
 }
 
+//将数据储存到session
 void Graph::save(Session& sess){
 	for(const auto &it:item){
 		auto ptr=dynamic_cast<Variable_Node*>(it.second);
@@ -289,6 +319,7 @@ void Graph::save(Session& sess){
 	}
 }
 
+//从session中恢复数据
 void Graph::restore(Session& sess){
 	for(const auto &pii:sess.values){
 		auto it=item.find(pii.first);
