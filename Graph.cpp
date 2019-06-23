@@ -17,10 +17,10 @@ void Graph::set_new_item(Data_Node* x){
 		abandoned.push_back(it->second);
 	}
 	item[name]=x;
-}
+}//向item中添加节点
 void Graph::add_node(Basic_Node* x){
 	abandoned.push_back(x);
-}
+}//向abandoned中添加需要回收的节点
 void Graph::add_node(Basic_Node* x,string name){
 	add_node(x);
 	set_node(x,name);
@@ -29,6 +29,7 @@ void Graph::set_node(Basic_Node* x,string name){
 	set_new_item(new Placeholder_Node(name, x));
 }
 
+//创建节点
 void Graph::initialize_operator_1(string name, string a, string Operator)
 {
     if (Operator == "SIN") {
@@ -248,7 +249,7 @@ void Graph::commands()
 				if(it.first!=nullptr){
 					it.first->set_value(it.second);
 				}
-			}
+			}//更新被重新赋值的Variable类对象的value
 			set_variable.clear();
 			reset_state();
         }
@@ -273,7 +274,7 @@ void Graph::commands()
 			Session sess;
 			save(sess);
 			fout<<sess;
-		}
+		}//将当前的variable存入文件中
 		else if (s == "READFILE") {
 			string filename;
 			ss>>filename;
@@ -281,11 +282,12 @@ void Graph::commands()
 			Session sess;
 			fin>>sess;
 			restore(sess);
-		}
+		}//将当前的variable读取到文件中
 
     }
 }
 
+//析构函数
 Graph::~Graph()
 {
     map<string, Data_Node*>::iterator iter = item.begin();
@@ -298,6 +300,7 @@ Graph::~Graph()
     }
 }
 
+//清空整张图
 void Graph::reset_state(){
 	for(auto it:item){
 		it.second->reset_state();
@@ -307,6 +310,7 @@ void Graph::reset_state(){
 	}
 }
 
+//将数据储存到session
 void Graph::save(Session& sess){
 	for(const auto &it:item){
 		auto ptr=dynamic_cast<Variable_Node*>(it.second);
@@ -315,6 +319,7 @@ void Graph::save(Session& sess){
 	}
 }
 
+//从session中恢复数据
 void Graph::restore(Session& sess){
 	for(const auto &pii:sess.values){
 		auto it=item.find(pii.first);

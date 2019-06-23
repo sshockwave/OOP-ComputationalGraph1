@@ -4,7 +4,7 @@ using namespace std;
 
 void Session::set(string name,float val){
 	values[name]=val;
-}
+}//建立由Variable名字到float的映射
 
 void Session::clear(){
 	values.clear();
@@ -16,7 +16,7 @@ ostream & operator << (ostream & out,const Session &sess){
 		out<<it.first<<" "<<it.second<<endl;
 	}
 	return out;
-}
+}//输出
 
 istream & operator >> (istream & in,Session &sess){
 	size_t n;
@@ -27,4 +27,4 @@ istream & operator >> (istream & in,Session &sess){
 		in>>name>>val;
 		sess.set(name,val);
 	}
-}
+}//输入

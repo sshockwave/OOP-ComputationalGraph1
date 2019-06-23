@@ -17,15 +17,15 @@ public:
     Operation_Node() {};
     Operation_Node(Basic_Node* b);
     Operation_Node(Basic_Node* b, Basic_Node* c);
-    Operation_Node(Basic_Node* b, Basic_Node* c, Basic_Node* d);
+    Operation_Node(Basic_Node* b, Basic_Node* c, Basic_Node* d);//三种不同的构造函数
     ~Operation_Node() {};
     virtual Basic_Node* EVAL() = 0;   //计算
-    string get_type() { return ""; }
-    string get_name() { return ""; }
+    string get_type() { return ""; }  //获取变量类型
+    string get_name() { return ""; }  //获取变量名
 	void clear_buffer();
 	std::vector<Basic_Node*> get_preq_nodes() override{
 		return prev_Datas;
-	}
+	}//获取前驱节点
     
     
     //DEBUG:
@@ -215,6 +215,7 @@ public:
 	void propagate_grad(Gradient_Node *target_func)override{}
 };
 
+//Cond运算符子类
 class Operation_COND :public Operation_Node
 {
 public:

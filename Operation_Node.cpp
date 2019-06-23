@@ -121,7 +121,7 @@ void Operation_Division::propagate_grad(Gradient_Node *target_func){
 	target_func->push_grad(prev_Datas[1],v);//-A/B^2*dB
 }
 
-//Bind运算符子类
+//Bind
 Basic_Node* Operation_Bind::EVAL( ){
 	 Basic_Node* temp1 = prev_Datas[0]->EVAL();
     if(temp1 == nullptr)
@@ -138,12 +138,12 @@ void Operation_Bind::propagate_grad(Gradient_Node *target_func){
 	target_func->push_grad(prev_Datas[0],grad);
 }
 
-//Assign运算符子类
+//Assign
 Basic_Node* Operation_Assign::EVAL(){
 	Basic_Node* temp2 = prev_Datas[1]->EVAL();
     if(temp2 == nullptr) return nullptr;
 	float ans = temp2->get_value();
-	set_variable[prev_Datas[0]]=ans;
+	set_variable[prev_Datas[0]]=ans;//向set_variable加重新value的Variable类对象以及所赋的值
 	value = ans;
     return this;
 }
@@ -262,7 +262,7 @@ void Operation_Sigmoid::propagate_grad(Gradient_Node *target_func){
 	target_func->push_grad(prev_Datas[0],v);
 }
 
-//Assert运算符子类
+//Assert
 Basic_Node* Operation_Assert::EVAL(){
 	Basic_Node* temp1 = prev_Datas[0]->EVAL();
 	if(temp1==nullptr)return nullptr;
@@ -274,7 +274,7 @@ Basic_Node* Operation_Assert::EVAL(){
     return this;
 }
 
-//Print运算符子类
+//Print
 Basic_Node* Operation_Print::EVAL( ){
     Basic_Node* temp1 = prev_Datas[0]->EVAL();
     if(temp1 == nullptr) return nullptr;
@@ -316,6 +316,8 @@ Basic_Node* Operation_Logic::EVAL( ){
     }
     return this;
 }
+
+//Cond类
 Basic_Node* Operation_COND::EVAL(){
     Basic_Node* temp01 = prev_Datas[0]->EVAL();
     if(temp01 == nullptr) return nullptr;

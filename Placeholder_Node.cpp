@@ -14,7 +14,7 @@ Basic_Node* Placeholder_Node::EVAL( ){
 		assigned = true;
 		return this;
 	}
-}
+}//进行判断以及计算
 
 
 Placeholder_Node::Placeholder_Node(string x){

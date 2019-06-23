@@ -20,13 +20,13 @@ public:
     Basic_Node(){};
     virtual ~Basic_Node(){};
     virtual Basic_Node* EVAL() = 0;
-    virtual string get_name()= 0;
-    virtual string get_type() = 0;
-	virtual void reset_state(){value=0;assigned=false;}
-	virtual void clear_buffer() = 0;
-    float get_value(){return value;};
-	void set_value(float a) { value = a;assigned = true; };
-	virtual std::vector<Basic_Node*> get_preq_nodes() = 0;
+    virtual string get_name()= 0;//获取变量名
+    virtual string get_type() = 0;//获取变量类型
+	virtual void reset_state(){value=0;assigned=false;}//清空节点
+	virtual void clear_buffer() = 0;//清空缓存
+    float get_value(){return value;};//获取值
+	void set_value(float a) { value = a;assigned = true; };//更改值
+	virtual std::vector<Basic_Node*> get_preq_nodes() = 0;//获取前驱节点
 	virtual void propagate_grad(class Gradient_Node *target_func){
 		std::cout<<"Error: Node of "<<get_type()<<" does not implement gradient calculation"<<std::endl;
 	}

@@ -20,16 +20,16 @@ public:
     string get_name();
     virtual string get_type();
     virtual Basic_Node* EVAL() = 0;
-	virtual void clear_buffer();
+	virtual void clear_buffer();//清空缓存
 	std::vector<Basic_Node*>get_preq_nodes(){
 		if(prev_Operation==nullptr)return {};
 		return {prev_Operation};
-	}
+	}//获得前驱节点
 	void propagate_grad(Gradient_Node* target_func)override{
 		if(prev_Operation!=nullptr){
 			target_func->push_grad(prev_Operation,target_func->get_grad(this));
 		}
-	}
+	}//将自身偏导传递给依赖的节点
  };
 
 
