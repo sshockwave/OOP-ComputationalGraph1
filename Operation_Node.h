@@ -100,7 +100,7 @@ class Operation_Assign:public Operation_Node{
 	protected:
 		map<Basic_Node*,float>&set_variable;
 public:
-	Operation_Assign(Basic_Node* b,Basic_Node* c,map<Basic_Node*,float>mp):Operation_Node(b, c),set_variable(mp) {};
+	Operation_Assign(Basic_Node* b,Basic_Node* c,map<Basic_Node*,float>&mp):Operation_Node(b, c),set_variable(mp) {};
 	~Operation_Assign(){}
 	Basic_Node* EVAL();
 	void propagate_grad(Gradient_Node *target_func)override;
