@@ -1,0 +1,16 @@
+1
+x P
+9
+z = x * x
+z = z * x
+z = z * x
+gz = GRAD z
+f1 = gz AT x
+gz2 = GRAD f1
+f2 = gz2 AT x
+gz3 = GRAD f2
+f3 = gz3 AT x
+3
+EVAL f1 1 x -1.2
+EVAL f2 1 x 2.3
+EVAL f3 1 x 0.8
